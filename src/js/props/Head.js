@@ -8,17 +8,16 @@ export default class Head extends React.Component{
         return(
             <div className={"head " + this.props.className}>
 
-                <header>
 
-                    <Text
-                        text={this.props.text}
-                    />
+                <Text
+                    text={this.props.text}
+                    className="title titleSquare"
+                />
 
-                    <Logo
-                        className={"fa-regular fa-ellipsis"}
-                    />
+                <Logo
+                    className={"fas fa-ellipsis"}
+                />
 
-                </header>
 
             </div>
         )

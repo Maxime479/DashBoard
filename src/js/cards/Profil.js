@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../SearchBar";
+import Image from "../tools/Image";
 import Text from "../tools/Text";
 import MyDevices from "./MyDevices";
 

@@ -1,0 +1,218 @@
+
+
+
+/*Long Cards*/
+.long{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 24em;
+
+    padding: 14px 10px 14px 16px;
+    margin: 1em 2em;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 39px;
+}
+
+.longContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+
+}
+
+.logo{
+    width: 5.07em;
+    height: 5.37em;
+
+    background: #FFFFFF;
+    border: 0.2px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    box-shadow: -3px 3px 4px rgba(154, 154, 154, 0.15), 3px 3px 4px rgba(154, 154, 154, 0.15);
+    border-radius: 33px;
+}
+
+.infos{
+    margin-left: 1em;
+    margin-right: 3em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.titleLong{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.2em;
+    line-height: 15px;
+
+    color: rgba(60, 60, 60, 0.9);
+}
+
+.dataLong{
+    width: 3.7em;
+    height: 1.8em;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
+
+    color: #838A98;
+}
+
+.graphLink{
+    width: 3.25em;
+    height: 5.90em;
+
+    border-radius: 19px;
+
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0 0.3em;
+
+    background-color: #FAFAFA;
+    background-image: url("../img/graphLogo.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+}
+
+.hum .logo{
+    background-image: url("../img/logoHum.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.temp .logo{
+    background-image: url("../img/logoTemp.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.lum .logo{
+    background-image: url("../img/logoLum.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.graphLink:hover{
+    cursor: pointer;
+}
+
+
+/*Square Cards*/
+.square{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 1.1em 1.1em 1.4em;
+    margin: auto 1em;
+
+    /*width: 10.3em;*/
+    width: 11.5em;
+    height: 8.25em;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 39px;
+}
+
+.head{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 90%;
+}
+
+.headSquare{
+    margin-top: -0.3em;
+}
+
+.titleSquare{
+    color: rgba(60, 60, 60, 0.9);
+    font-size: 0.85em;
+}
+
+.fa-ellipsis{
+    color: rgba(131, 138, 152, 0.7);
+}
+
+.fa-ellipsis:hover{
+    cursor: pointer;
+}
+
+.squareBody{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-top: 0.6em;
+    margin-left: -1em;
+
+
+    width: 100%;
+    /*background-color: #838A98;*/
+}
+
+.dataSquare{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+
+/*Big Cards*/
+.big{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.7em 1.5em;
+
+    width: 21.6em;
+    height: 16.2em;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 39px;
+
+    /*flex: none;*/
+    /*order: 1;*/
+    /*flex-grow: 1;*/
+    /*margin: 0px 21px;*/
+}
+
+.long, .big, .square, .graphLink{
+    transition: box-shadow .3s;
+}
+
+.long:hover, .big:hover, .square:hover, .graphLink:hover{
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+
+
+
+
+
+
+

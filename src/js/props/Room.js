@@ -1,4 +1,7 @@
 import React from "react";
+import Image from "../tools/Image";
+
+import roomImg from "../../img/roundRoomLevel.png"
 
 
 export default class Room extends React.Component{
@@ -6,7 +9,10 @@ export default class Room extends React.Component{
         return(
             <div className={"room " + this.props.className}>
 
-
+                <Image
+                    src={roomImg}
+                    alt="room image"
+                />
 
             </div>
         )

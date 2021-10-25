@@ -8,21 +8,34 @@ export default class Long extends React.Component{
         return(
             <div className={"long " + this.props.className}>
 
-                <Sensor/>
+                {/*<Sensor/>*/}
 
-                <div>
+                <div className="longContainer">
 
-                    <Text
-                        className="title"
-                        text={this.props.title}
-                    />
+                    <div className="logo logoLong">
 
-                    <Text
-                        className="data"
-                        text={this.props.data}
-                    />
+                    </div>
+
+                    <div className="infos">
+
+                        <Text
+                            className="title titleLong"
+                            text={this.props.title}
+                        />
+
+                        <Text
+                            className="data dataLong"
+                            text={this.props.data}
+                        />
+
+                    </div>
 
                 </div>
+
+                <div className="graphLink">
+
+                </div>
+
 
             </div>
         )

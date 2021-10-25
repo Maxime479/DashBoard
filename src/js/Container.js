@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Logo from "./tools/Logo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 import Navigation from "./Navigation";
 import Profil from "./cards/Profil";
 import Square from "./cards/Square";
@@ -15,9 +16,10 @@ export default class container extends React.Component{
     constructor(props) {
         super(props);
 
+
         this.state = {
             account: 0,
-            color: "blue",
+            color: "light",
 
             userData : [
                 {
@@ -45,10 +47,19 @@ export default class container extends React.Component{
         })
     };
 
-    changeStyle = color => () => {
-        this.setState({
-            color: color,
-        })
+    changeStyle = () => {
+
+        let color = this.state.color
+
+        if(color === "light"){
+            this.setState({
+                color: "dark"
+            })
+        }else{
+            this.setState({
+                color: "light"
+            })
+        }
     };
 
 
@@ -59,73 +70,85 @@ export default class container extends React.Component{
             <div className="App">
 
                 <header>
-
                     <h1>DashBoard</h1>
-
                 </header>
 
-                <aside>
-                    <Navigation/>
-                </aside>
+                <body className="mainBody">
+
+                    <aside className="navContainer">
+                        <Navigation/>
+                    </aside>
 
 
-                <body>
+                    <main>
 
-                    <header>
-                        <SearchBar/>
-                        <Text
-                            className="date"
-                            text="Lundi, 18 Octobre 2021"
-                        />
-                    </header>
+                        <header className="mainBodyHeader">
+                            <SearchBar/>
+                            <Text
+                                className="date"
+                                text="Lundi, 18 Octobre 2021"
+                            />
+                        </header>
 
-                    <div className="rooms">
+                        <div className="rooms">
 
-                        <Square
-                            title="Salon"
-                        />
-
-                        <Square
-                            title="Chambre"
-                        />
-
-                        <Square
-                            title="Cuisine"
-                        />
-
-                        <Square
-                            title="Salle à manger"
-                        />
-
-
-                    </div>
-
-                    <div>
-                        <div className="datas">
-
-                            <Long
-                                title="Température Intérieur"
-                                data="+25°C"
+                            <Square
+                                title="Salon"
                             />
 
-                            <Long
-                                title="Humidité"
-                                data="30%"
+                            <Square
+                                title="Chambre"
                             />
+
+                            <Square
+                                title="Cuisine"
+                            />
+
+                            <Square
+                                title="Salle à manger"
+                            />
+
 
                         </div>
 
-                        <Big
-                            title="Intensité Lumineuse"
-                        />
-                    </div>
+                        <div className="lowBody">
+                            <div className="datas">
+
+                                <Long
+                                    className="temp"
+                                    title="Température"
+                                    data="+25°C"
+                                />
+
+                                <Long
+                                    className="hum"
+                                    title="Humidité"
+                                    data="30%"
+                                />
+
+                                <Long
+                                    className="lum"
+                                    title="Luminosité"
+                                    data="150lm"
+                                />
+
+                            </div>
+
+                            <Big
+                                title="Intensité Lumineuse"
+                            />
+                        </div>
+
+                    </main>
+
+
+                    <aside className="profilContainer">
+                        <Profil/>
+                    </aside>
 
                 </body>
 
 
-                <aside>
-                    <Profil/>
-                </aside>
 
 
 

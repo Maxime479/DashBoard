@@ -10,7 +10,7 @@ export default class Logo extends React.Component{
             //     icon={this.props.icon}
             // />
 
-            <i className={this.props.className}>
+            <i className={"logoComp " + this.props.className}>
             </i>
 
 
