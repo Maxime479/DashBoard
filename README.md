@@ -33,4 +33,4 @@ Interface de gestion domotique personnalisé
 
 
 
--- Maxime Saurin --
+-- Maxime Saurin / Loïc Clemence / Teophile De Larquier --
