@@ -1,4 +1,12 @@
 
+:root{
+    --first-gray: #FBFBFB;
+    --second-gray: #F6F6F6;
+    --head-gray: #838A98;
+}
+
+
+
 
 
 /*Long Cards*/
@@ -47,10 +55,11 @@
     justify-content: space-around;
 }
 
-.titleLong{
+.titleLong, .titleBig{
     font-style: normal;
     font-weight: normal;
-    font-size: 1.2em;
+    font-size: 1em;
+    /*font-size: 1.2em;*/
     line-height: 15px;
 
     color: rgba(60, 60, 60, 0.9);
@@ -65,6 +74,7 @@
     font-size: 1.5em;
 
     color: #838A98;
+    text-align: center;
 }
 
 .graphLink{
@@ -81,6 +91,7 @@
     margin: 0 0.3em;
 
     background-color: #FAFAFA;
+    /*background-image: url("App/src/img/graphLogo.png");*/
     background-image: url("../img/graphLogo.png");
     background-repeat:  no-repeat;
     background-size: contain;
@@ -190,7 +201,6 @@
     width: 21.6em;
     height: 16.2em;
 
-    background: #FFFFFF;
     border: 1px solid rgba(165, 165, 165, 0.2);
     box-sizing: border-box;
     border-radius: 39px;
@@ -199,6 +209,13 @@
     /*order: 1;*/
     /*flex-grow: 1;*/
     /*margin: 0px 21px;*/
+
+    background-color: #FFFFFF;
+    background-image: url("../img/BigSlider.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+
 }
 
 .long, .big, .square, .graphLink{
@@ -207,6 +224,89 @@
 
 .long:hover, .big:hover, .square:hover, .graphLink:hover{
     box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.slider{
+    width: 141px;
+    height: 131px;
+
+    background: #FFFFFF;
+    border: 0.2px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    box-shadow: -3px 3px 4px rgba(154, 154, 154, 0.15), 3px 3px 4px rgba(154, 154, 154, 0.15);
+    border-radius: 31px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0.4em;
+}
+
+.dataBig, .unitBig{
+    width: 3.7em;
+    height: 1.8em;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.9em;
+
+    color: #838A98;
+    text-align: right;
+}
+
+.unitBig{
+    text-align: left;
+    font-size: 1.2em;
+    padding-top: 0.2em;
+}
+
+
+.profilImage{
+    border-radius: 50%;
+    width: 7em;
+
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15), 0px -4px 10px rgba(0, 0, 0, 0.15);
+
+    margin: 1em 0;
+}
+
+
+
+.profil{
+    background-color: var(--second-gray);
+    width: 20em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    border-radius: 35px;
+
+}
+
+.myDevices{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1em;
+    align-items: center;
+
+    width: 90%;
+
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 38px;
+
+    opacity: 0.8;
+
+    padding: 1em 0;
+    margin: 2em 1em 1em 1em;
+}
+
+.myDevicesHead{
+    width: 85%;
+    margin-bottom: 1em;
+    color: var(--head-gray);
 }
 
 

@@ -12,6 +12,8 @@ export default class Big extends React.Component{
 
                 <Head
                     text={this.props.title}
+                    className="headBig"
+                    classname="titleBig"
                 />
 
                 <Slider/>

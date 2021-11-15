@@ -69,7 +69,7 @@ export default class container extends React.Component{
         return(
             <div className="App">
 
-                <header>
+                <header className="mainHeader">
                     <h1>DashBoard</h1>
                 </header>
 
@@ -143,7 +143,9 @@ export default class container extends React.Component{
 
 
                     <aside className="profilContainer">
-                        <Profil/>
+                        <Profil
+                            username="Maxime"
+                        />
                     </aside>
 
                 </body>

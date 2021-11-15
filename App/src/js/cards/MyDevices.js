@@ -10,6 +10,7 @@ export default class MyDevices extends React.Component{
 
                 <Head
                     text="Mes Appareils"
+                    className="myDevicesHead"
                 />
 
                 <Device

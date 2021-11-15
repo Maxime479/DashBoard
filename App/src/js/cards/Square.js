@@ -12,22 +12,23 @@ export default class Square extends React.Component{
 
                 <Head
                     text={this.props.title}
-                    className="headSquare"
+                    className="headSquare "
+                    classname="titleSquare "
                 />
 
-                <body className="squareBody">
+                <body className="squareBody ">
 
                     <Room/>
 
-                    <div className="data dataSquare">
+                    <div className="data dataSquare ">
 
                         <Text
-                            className="number"
+                            className="number "
                             text={"196"}
                         />
 
                         <Text
-                            className="unit"
+                            className="unit "
                             text={"kWh"}
                         />
 

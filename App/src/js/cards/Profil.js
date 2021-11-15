@@ -9,13 +9,17 @@ export default class Profil extends React.Component{
         return(
             <div className={"profil " + this.props.className}>
 
-                <Image/>
-
-                <Text
-                    text={this.props.username}
+                <Image
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnujNmRpIR4M38nTjHOZQYdZk3DSykbotmbA&usqp=CAU"
+                    className="profilImage"
                 />
 
-                <MyDevices/>
+                <Text
+                    text={"Bonjour " + this.props.username + " !"}
+                />
+
+                <MyDevices
+                />
 
             </div>
         )

@@ -11,7 +11,7 @@ export default class Head extends React.Component{
 
                 <Text
                     text={this.props.text}
-                    className="title titleSquare"
+                    className={"title " + this.props.classname}
                 />
 
                 <Logo

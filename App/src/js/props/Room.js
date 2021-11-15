@@ -12,6 +12,7 @@ export default class Room extends React.Component{
                 <Image
                     src={roomImg}
                     alt="room image"
+                    className={"roundRoomImage"}
                 />
 
             </div>
