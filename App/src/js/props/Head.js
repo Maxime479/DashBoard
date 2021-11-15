@@ -15,7 +15,7 @@ export default class Head extends React.Component{
                 />
 
                 <Logo
-                    className={"fas fa-ellipsis"}
+                    className={"fas fa-ellipsis-h"}
                 />
 
 

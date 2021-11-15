@@ -8,7 +8,7 @@ export default class Device extends React.Component{
         return(
             <div className={"device " + this.props.className}>
 
-                <div>
+                <div className={"deviceBack " + this.props.color}>
                     <Logo
                         className={this.props.icon}
                     />
@@ -16,6 +16,7 @@ export default class Device extends React.Component{
 
                 <Text
                     text={this.props.name}
+                    className="deviceName"
                 />
 
             </div>

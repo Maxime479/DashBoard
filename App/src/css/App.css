@@ -1,3 +1,10 @@
+
+@font-face {
+  font-family: 'Roboto', serif;
+  src: url("http://fonts.googleapis.com/css?family=Roboto");
+}
+
+
 .App {
   /*text-align: center;*/
   font-family: 'Roboto', serif;
@@ -34,10 +41,6 @@ header h1{
 
 
 
-.navContainer{
-  background-color: darkgrey;
-}
-
 main{
   display: flex;
   flex-flow: column nowrap;
@@ -52,7 +55,8 @@ main{
   justify-content: space-between;
 
   /*background-color: #838A98;*/
-  width: 42em;
+  /*width: 42em;*/
+  width: 100%;
 }
 
 /*SearchBar*/
@@ -83,6 +87,11 @@ main{
   display: block;
 }
 
+.logoComp{
+  color: var(--text-gray);
+  cursor: pointer;
+}
+
 /*Rooms Container*/
 .rooms{
   display: flex;
@@ -91,6 +100,7 @@ main{
   justify-content: space-between;
 
   margin: 1em 0;
+  gap: 1em;
 }
 
 .lowBody{
@@ -100,13 +110,42 @@ main{
   justify-content: space-between;
 }
 
+.datas{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 1em;
+
+}
 
 
+.date{
+  color: var(--text-gray);
+}
+
+.day{
+  font-weight: bold;
+}
 
 
+/*Navigation*/
+.navContainer{
+  margin-left: -2em;
+  background-color: #422F89;
+  color: white;
+  opacity: 0.9;
 
+  width: 11em;
+  height: 30em;
 
+  border: 1px solid rgba(165, 165, 165, 0.2);
+  border-radius: 40px;
 
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+
+  padding-top: 2em;
+}
 
 
 

@@ -13,10 +13,34 @@ export default class MyDevices extends React.Component{
                     className="myDevicesHead"
                 />
 
-                <Device
-                    name="Lampe"
-                    icon="fa-solid fa-lightbulb"
-                />
+                <div className="devicesContainer">
+
+                    <Device
+                        name="Lampe"
+                        icon="fa-solid fa-lightbulb"
+                        color="red"
+                    />
+
+                    <Device
+                        name="Routeur"
+                        icon="fa-solid fa-lightbulb"
+                        color="green"
+                    />
+
+                    <Device
+                        name="Enceinte"
+                        icon="fa-solid fa-lightbulb"
+                        color="orange"
+                    />
+
+                    <Device
+                        name="Sensor"
+                        icon="fa-solid fa-lightbulb"
+                        color="blue"
+                    />
+
+                </div>
+
 
             </div>
         )

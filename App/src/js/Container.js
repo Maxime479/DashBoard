@@ -84,10 +84,10 @@ export default class container extends React.Component{
 
                         <header className="mainBodyHeader">
                             <SearchBar/>
-                            <Text
-                                className="date"
-                                text="Lundi, 18 Octobre 2021"
-                            />
+                            <a className="date">
+                                <span className="day">Lundi, </span>
+                                18 Octobre 2021
+                            </a>
                         </header>
 
                         <div className="rooms">
