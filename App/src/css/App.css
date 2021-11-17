@@ -127,27 +127,6 @@ main{
 }
 
 
-/*Navigation*/
-.navContainer{
-  margin-left: -2em;
-  background-color: #422F89;
-  color: white;
-  opacity: 0.9;
-
-  width: 11em;
-  height: 30em;
-
-  border: 1px solid rgba(165, 165, 165, 0.2);
-  border-radius: 40px;
-
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-
-  padding-top: 2em;
-}
-
-
 
 
 

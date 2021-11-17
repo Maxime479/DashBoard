@@ -77,7 +77,9 @@ export default class home extends React.Component{
                 <body className="mainBody">
 
                     <aside className="navContainer">
-                        <Navigation/>
+                        <Navigation
+                            selected="home"
+                        />
                     </aside>
 
 
