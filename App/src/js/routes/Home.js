@@ -1,17 +1,17 @@
 import React, {useState} from "react";
-import Logo from "./tools/Logo";
+import Logo from "../tools/Logo";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-import Navigation from "./Navigation";
-import Profil from "./cards/Profil";
-import Square from "./cards/Square";
-import Long from "./cards/Long";
-import Big from "./cards/Big";
-import SearchBar from "./SearchBar";
-import Text from "./tools/Text";
+import Navigation from "../Navigation";
+import Profil from "../cards/Profil";
+import Square from "../cards/Square";
+import Long from "../cards/Long";
+import Big from "../cards/Big";
+import SearchBar from "../SearchBar";
+import Text from "../tools/Text";
 
 
-export default class container extends React.Component{
+export default class home extends React.Component{
 
     constructor(props) {
         super(props);
