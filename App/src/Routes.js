@@ -8,7 +8,7 @@ import Devices from './js/routes/Devices';
 import Statistics from './js/routes/Statistics';
 import Members from './js/routes/Members';
 
-import NotFound from './js/routes/NotFound.js';
+import NotFound from './js/routes/NotFound';
 
 
 export default () => (
@@ -20,4 +20,4 @@ export default () => (
         <Route path="/members" exact element={Members} />
         <Route element={NotFound} />
     </Routes>
-)
+);

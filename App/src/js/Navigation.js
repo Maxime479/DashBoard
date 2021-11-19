@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Routes from '../routes';
+import Routes from '../Routes';
 
 import '../css/Navigation.css';
 
@@ -78,14 +78,15 @@ export default class Navigation extends React.Component{
                             <li><Link to="/devices" className={this.state.class.devices} > Appareils </Link></li>
                             <li><Link to="/statistics" className={this.state.class.statistics} > Statistiques </Link></li>
                             <li><Link to="/members" className={this.state.class.members} > Membres </Link></li>
+
                         </ul>
 
                     </nav>
 
 
-
+                <Routes/>
                 </div>
-            )
+            );
 
         }else{
             this.setSelectMenu(select);

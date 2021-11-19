@@ -9,10 +9,9 @@ import Square from "../cards/Square";
 import Long from "../cards/Long";
 import Big from "../cards/Big";
 import SearchBar from "../SearchBar";
-import Text from "../tools/Text";
 
 
-export default class home extends React.Component{
+export default class Home extends React.Component{
 
     constructor(props) {
         super(props);
