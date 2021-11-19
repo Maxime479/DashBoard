@@ -1,0 +1,28 @@
+
+
+
+
+.myDevices{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 1em;
+    align-items: center;
+
+    width: 90%;
+
+    border: var(--card--border);
+    box-sizing: border-box;
+    border-radius: 38px;
+
+    opacity: 0.8;
+
+    padding: 1em 0;
+    margin: 2em 1em 1em 1em;
+}
+
+.myDevicesHead{
+    width: 85%;
+    margin-bottom: 1em;
+    color: var(--text-gray);
+}
+

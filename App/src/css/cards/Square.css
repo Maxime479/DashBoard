@@ -1,0 +1,54 @@
+
+
+.square{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 1.1em 1.1em 1.4em;
+
+    /*width: 10.3em;*/
+    width: 11.5em;
+    height: 8.25em;
+
+    background: var(--background--card--color);
+    border: var(--card--border);
+    box-sizing: border-box;
+    border-radius: 39px;
+}
+
+
+
+.headSquare{
+    margin-top: -0.1em;
+    margin-left: 5%;
+}
+
+.titleSquare{
+    color: rgba(60, 60, 60, 0.9);
+    font-size: 0.85em;
+}
+
+
+.squareBody{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-top: 0.6em;
+    margin-left: -1em;
+
+
+    width: 100%;
+    /*background-color: #838A98;*/
+}
+
+.dataSquare{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+

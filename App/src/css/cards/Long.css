@@ -1,0 +1,114 @@
+
+
+
+.long{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 24em;
+
+    padding: 14px 10px 14px 16px;
+
+    background: var(--background--card--color);
+    border: var(--card--border);
+    box-sizing: border-box;
+    border-radius: 39px;
+}
+
+.longContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+
+}
+
+.logo{
+    width: 5.07em;
+    height: 5.37em;
+
+    background: var(--background--prop--color);
+    border: var(--prop--border);
+    box-sizing: border-box;
+    box-shadow: var(--prop--shadow);
+    border-radius: 33px;
+}
+
+.infos{
+    margin-left: 1em;
+    margin-right: 3em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.titleLong{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    /*font-size: 1.2em;*/
+    line-height: 15px;
+
+    color: rgba(60, 60, 60, 0.9);
+}
+
+
+.dataLong{
+    width: 3.7em;
+    height: 1.8em;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5em;
+
+    color: var(--text-gray);
+    text-align: center;
+}
+
+.graphLink{
+    width: 3.25em;
+    height: 5.90em;
+
+    border-radius: 19px;
+
+
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    margin: 0 0.3em;
+
+    background-color: #FAFAFA;
+    /*background-image: url("App/src/img/graphLogo.png");*/
+    background-image: url("../../img/graphLogo.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+}
+
+.hum .logo{
+    background-image: url("../../img/logoHum.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.temp .logo{
+    background-image: url("../../img/logoTemp.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.lum .logo{
+    background-image: url("../../img/logoLum.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.graphLink:hover{
+    cursor: pointer;
+}

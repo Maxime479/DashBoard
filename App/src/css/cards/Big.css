@@ -1,0 +1,81 @@
+
+
+
+
+
+
+.big{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.7em 1.5em;
+
+    width: 21.6em;
+    height: 16.2em;
+
+    border: var(--card--border);
+    box-sizing: border-box;
+    border-radius: 39px;
+
+    /*flex: none;*/
+    /*order: 1;*/
+    /*flex-grow: 1;*/
+    /*margin: 0px 21px;*/
+
+    background: var(--background--card--color);
+    background-image: url("../../img/BigSlider.png");
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+.slider{
+    width: 141px;
+    height: 131px;
+
+    background: var(--background--prop--color);
+    border: var(--prop--border);
+    box-sizing: border-box;
+    box-shadow: var(--prop--shadow);
+    border-radius: 31px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-right: 0.4em;
+}
+
+
+
+.titleBig{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+    /*font-size: 1.2em;*/
+    line-height: 15px;
+
+    color: rgba(60, 60, 60, 0.9);
+}
+
+
+
+.dataBig, .unitBig{
+    width: 3.7em;
+    height: 1.8em;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.9em;
+
+    color: var(--text-gray);
+    text-align: right;
+}
+
+.unitBig{
+    text-align: left;
+    font-size: 1.2em;
+    padding-top: 0.2em;
+}

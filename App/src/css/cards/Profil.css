@@ -1,0 +1,24 @@
+
+
+
+.profilImage{
+    border-radius: 50%;
+    width: 7em;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 -4px 10px rgba(0, 0, 0, 0.15);
+
+    margin: 1em 0;
+}
+
+
+.profil{
+    background-color: var(--second-gray);
+    width: 20em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    border-radius: 35px;
+
+}

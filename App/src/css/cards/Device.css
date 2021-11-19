@@ -1,0 +1,60 @@
+
+
+
+
+
+
+.device{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 0.3em;
+}
+
+
+.deviceBack{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 6em;
+    height: 6em;
+
+    border: var(--card--border);
+    box-sizing: border-box;
+    border-radius: 22px;
+
+    background-color: #FAA4A4;
+}
+
+.devicesContainer{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 2em;
+}
+
+
+/*Utility classes*/
+.red{
+    background-color: #FAA4A4;
+}
+
+.green{
+    background-color: #CBFF75;
+}
+
+.orange{
+    background-color: #FFBB6C;
+}
+
+.blue{
+    background-color: #A3D8FF;
+}
+
+.deviceName{
+    color: var(--text-gray);
+    font-size: 0.9em;
+}
+
+
