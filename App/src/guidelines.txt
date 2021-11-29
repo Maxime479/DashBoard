@@ -1,0 +1,20 @@
+Requete API
+
+1. Date
+2. Météo
+3. Bouton On/Off
+4. Requête Data Stat
+5. Changer Mot de passe
+6. Membres
+7. Pièces
+8. Appareils
+
+9. HomeAssistant ou Tuya
+
+
+
+
+
+BDD Source
+ensuite une BDD par page
+
