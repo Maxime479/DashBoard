@@ -1,8 +1,10 @@
 import React from "react";
 import Text from "../tools/Text";
 import Logo from "../tools/Logo";
-import Room from "../props/Room";
+import LittleRoom from "../props/LittleRoom";
 import Head from "../props/Head";
+
+import '../../css/cards/Square.css';
 
 
 export default class Square extends React.Component{
@@ -18,7 +20,7 @@ export default class Square extends React.Component{
 
                 <body className="squareBody ">
 
-                    <Room/>
+                    <LittleRoom/>
 
                     <div className="data dataSquare ">
 

@@ -4,6 +4,8 @@ import Logo from "../tools/Logo";
 import Slider from "../props/Slider";
 import Head from "../props/Head";
 
+import '../../css/cards/Big.css';
+
 
 export default class Big extends React.Component{
     render(){

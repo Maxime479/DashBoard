@@ -1,17 +1,15 @@
 import './css/App.css';
 import './css/cards.css';
 
-import './css/cards/Big.css';
-import './css/cards/Device.css';
-import './css/cards/Long.css';
-import './css/cards/MyDevices.css';
-import './css/cards/Profil.css';
-import './css/cards/Square.css';
 
-import './css/props/Head.css';
-import './css/props/Room.css';
-import './css/props/Sensor.css';
-import './css/props/Slider.css';
+
+
+
+
+
+
+
+// import './js/addons/Test.css';
 
 
 
@@ -32,7 +30,7 @@ import Devices from "./js/routes/Devices";
 import Statistics from "./js/routes/Statistics";
 import Members from "./js/routes/Members";
 import NotFound from "./js/routes/NotFound";
-import Device from "./js/cards/Device";
+import LittleDevice from "./js/cards/LittleDevice";
 import Profil from "./js/cards/Profil";
 
 function App() {
@@ -45,9 +43,8 @@ function App() {
   //   return () => clearTimeout(timer);
   // }, []);
 
-
   return (
-      <Members />
+      <Home />
   );
 }
 

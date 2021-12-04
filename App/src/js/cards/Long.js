@@ -2,6 +2,8 @@ import React from "react";
 import Sensor from "../props/Sensor";
 import Text from "../tools/Text";
 
+import '../../css/cards/Long.css';
+
 
 export default class Long extends React.Component{
     render(){

@@ -1,0 +1,55 @@
+
+
+
+
+.deviceInPage{
+    width: 10.06em;
+    height: 7.13em;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 22px;
+
+    padding: 1em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+
+    font-family: Roboto;
+}
+
+.deviceImage{
+    width: 2.3em;
+}
+
+.deviceInPageHead{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    width: 100%;
+}
+
+.onOffButton{
+    cursor: pointer;
+}
+
+.deviceName{
+    margin-top: 0.5em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+
+    color: rgba(60, 60, 60, 0.9);
+}
+
+.deviceRoom{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75em;
+
+    color: rgba(60, 60, 60, 0.8);
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Text from "../tools/Text";
 import Logo from "../tools/Logo";
 
+import '../../css/props/Head.css';
 
 export default class Head extends React.Component{
     render(){

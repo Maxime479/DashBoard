@@ -1,0 +1,56 @@
+
+
+
+
+.memberInPage{
+    background: #FFFFFF;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 45px;
+
+    font-family: Roboto;
+    font-style: normal;
+
+    padding: 2em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.memberName{
+    font-size: 1.2em;
+    line-height: 15px;
+
+    color: rgba(60, 60, 60, 0.9);
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.memberImage{
+    border-radius: 50%;
+    width: 5.5em;
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15), 0 -4px 10px rgba(0, 0, 0, 0.15);*/
+}
+
+.top, .bottom{
+    width: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+
+    gap: 1em;
+
+    color: rgba(60, 60, 60, 0.9);
+}
+
+.top{
+    padding-bottom: 2em;
+}
+
+.bold{
+    font-weight: bold;
+}

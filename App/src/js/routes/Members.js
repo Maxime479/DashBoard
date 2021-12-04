@@ -5,12 +5,16 @@ import Square from "../cards/Square";
 import Long from "../cards/Long";
 import Big from "../cards/Big";
 import Profil from "../cards/Profil";
+import Test from "../addons/Test";
+import Member from "../nav/Member";
 
 
 export default class Members extends React.Component{
 
 
     render() {
+
+
 
         return(
             <div className="App">
@@ -29,6 +33,13 @@ export default class Members extends React.Component{
 
 
                     <main>
+
+
+
+
+                        <Member
+                        />
+
 
 
 

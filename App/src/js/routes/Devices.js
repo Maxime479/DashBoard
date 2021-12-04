@@ -1,12 +1,9 @@
 import React from "react";
 import Navigation from "../Navigation";
-import SearchBar from "../SearchBar";
-import Square from "../cards/Square";
-import Long from "../cards/Long";
-import Big from "../cards/Big";
 import Profil from "../cards/Profil";
-import Device from "../cards/Device";
-import MyDevices from "../cards/MyDevices";
+import Device from "../nav/Device";
+
+
 
 
 export default class Devices extends React.Component{
@@ -32,38 +29,10 @@ export default class Devices extends React.Component{
 
                     <main>
 
-
-
-                        <div className="lowBody">
-                            <div className="datas">
-
-                                <Long
-                                    className="temp"
-                                    title="Température"
-                                    data="+25°C"
-                                />
-
-                                <Long
-                                    className="hum"
-                                    title="Humidité"
-                                    data="30%"
-                                />
-
-                                <Long
-                                    className="lum"
-                                    title="Luminosité"
-                                    data="150lm"
-                                />
-
-                            </div>
-
-                            <Big
-                                title="Intensité Lumineuse"
-                            />
-                        </div>
-
-                        <MyDevices
+                        <Device
                         />
+
+
 
                     </main>
 

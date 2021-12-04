@@ -1,6 +1,8 @@
 import React from "react";
 import Head from "../props/Head";
-import Device from "./Device";
+import LittleDevice from "./LittleDevice";
+
+import '../../css/cards/MyDevices.css';
 
 
 export default class MyDevices extends React.Component{
@@ -15,25 +17,25 @@ export default class MyDevices extends React.Component{
 
                 <div className="devicesContainer">
 
-                    <Device
+                    <LittleDevice
                         name="Lampe"
                         icon="fa-solid fa-lightbulb"
                         color="red"
                     />
 
-                    <Device
+                    <LittleDevice
                         name="Routeur"
                         icon="fa-solid fa-lightbulb"
                         color="green"
                     />
 
-                    <Device
+                    <LittleDevice
                         name="Enceinte"
                         icon="fa-solid fa-lightbulb"
                         color="orange"
                     />
 
-                    <Device
+                    <LittleDevice
                         name="Sensor"
                         icon="fa-solid fa-lightbulb"
                         color="blue"

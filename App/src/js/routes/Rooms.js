@@ -5,6 +5,7 @@ import Square from "../cards/Square";
 import Long from "../cards/Long";
 import Big from "../cards/Big";
 import Profil from "../cards/Profil";
+import Room from "../nav/Room";
 
 
 export default class Rooms extends React.Component{
@@ -31,27 +32,10 @@ export default class Rooms extends React.Component{
                     <main>
 
 
-                        <div className="rooms">
-
-                            <Square
-                                title="Salon"
-                            />
-
-                            <Square
-                                title="Chambre"
-                            />
-
-                            <Square
-                                title="Cuisine"
-                            />
-
-                            <Square
-                                title="Salle à manger"
-                            />
 
 
-                        </div>
-
+                        <Room
+                        />
 
                     </main>
 

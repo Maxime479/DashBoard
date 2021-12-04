@@ -3,6 +3,8 @@ import Image from "../tools/Image";
 import Text from "../tools/Text";
 import MyDevices from "./MyDevices";
 
+import '../../css/cards/Profil.css';
+
 
 export default class Profil extends React.Component{
     render(){

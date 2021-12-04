@@ -1,0 +1,58 @@
+
+
+
+
+.roomInPage{
+    width: 16em;
+
+    background: #FFFFFF;
+    border: 1px solid rgba(165, 165, 165, 0.2);
+    box-sizing: border-box;
+    border-radius: 39px;
+
+    padding: 1.5em 2em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 1em;
+
+    font-family: Roboto;
+
+    color: rgba(60, 60, 60, 0.9);
+    font-size: 0.9em;
+}
+
+.listDevice, .nbDevice{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0.4em;
+}
+
+.listDevice{
+    gap: 1em;
+}
+
+.listDeviceButton{
+    cursor: pointer;
+}
+
+.deviceList{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.roomName{
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+
+
+
+.roomImage{
+    width: 4.2em;
+}

@@ -2,8 +2,10 @@ import React from "react";
 import Text from "../tools/Text";
 import Logo from "../tools/Logo";
 
+import '../../css/cards/LittleDevice.css';
 
-export default class Device extends React.Component{
+
+export default class LittleDevice extends React.Component{
     render(){
         return(
             <div className={"device " + this.props.className}>
