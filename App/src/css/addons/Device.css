@@ -3,7 +3,7 @@
 
 
 .deviceInPage{
-    width: 10.06em;
+    width: 11em;
     height: 7.13em;
 
     background: #FFFFFF;
@@ -40,10 +40,13 @@
 .deviceName{
     margin-top: 0.5em;
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1em;
 
     color: rgba(60, 60, 60, 0.9);
+
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .deviceRoom{
@@ -53,3 +56,25 @@
 
     color: rgba(60, 60, 60, 0.8);
 }
+
+.sensorImage{
+    transform: scale(1.9);
+}
+
+.sensorData{
+    font-size: 1.6em;
+    color: rgba(60, 60, 60, 0.8);
+}
+.sensorHead{
+    align-items: center;
+}
+
+
+.deviceList{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
+}
+
+
