@@ -12,7 +12,7 @@ export default class DeviceList extends React.Component{
 
     render() {
 
-        var deviceList = [];
+        let deviceList = [];
 
         // for (var i = 0; i < this.props.level; i++) {
         //     deviceList.push(
@@ -59,7 +59,7 @@ export default class DeviceList extends React.Component{
 
             return(
 
-                <div className="deviceList">
+                <div className="deviceListContainer">
 
                     {deviceList}
 
