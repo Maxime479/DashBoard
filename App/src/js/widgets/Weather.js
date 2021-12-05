@@ -163,7 +163,8 @@ export default class Weather extends React.Component{
                 // let icon = "http://openweathermap.org/img/wn/" + "" + "@2x.png"
                 // this.setState({icon: data.current.weather_icons})
 
-                this.setState({humidity: data.current.humidity})
+                let humidity = data.current.humidity + " %"
+                this.setState({humidity: humidity})
 
                 let precip = data.current.precip + " mm"
                 this.setState({precip: precip})
