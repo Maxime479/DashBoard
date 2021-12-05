@@ -4,6 +4,7 @@
 
 .roomInPage{
     width: 16em;
+    height: fit-content;
 
     background: #FFFFFF;
     border: 1px solid rgba(165, 165, 165, 0.2);
@@ -31,6 +32,7 @@
 
 .listDevice{
     gap: 1em;
+    padding-bottom: 0.5em;
 }
 
 .listDeviceButton{
@@ -55,4 +57,11 @@
 
 .roomImage{
     width: 4.2em;
+}
+
+.roomListContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
 }
