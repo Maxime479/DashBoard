@@ -32,7 +32,7 @@ header h1{
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   background-color: #FBFBFB;
 
   padding: 2em 5em;
@@ -110,11 +110,16 @@ main{
   justify-content: space-between;
 }
 
-.datas{
+.left{
   display: flex;
   flex-flow: column nowrap;
-  gap: 1em;
+  justify-content: space-between;
+  align-items: flex-start;
 
+  box-sizing: border-box;
+
+  height: 100%;
+  gap: 2em;
 }
 
 
@@ -127,6 +132,12 @@ main{
 }
 
 
-
+.right{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1em;
+}
 
 

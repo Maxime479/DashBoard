@@ -9,6 +9,8 @@ import Square from "../cards/Square";
 import Long from "../cards/Long";
 import Big from "../cards/Big";
 import SearchBar from "../SearchBar";
+import Date from "../widgets/Date";
+import Weather from "../widgets/Weather";
 
 
 export default class Home extends React.Component{
@@ -86,10 +88,8 @@ export default class Home extends React.Component{
 
                         <header className="mainBodyHeader">
                             <SearchBar/>
-                            <a className="date">
-                                <span className="day">Lundi, </span>
-                                18 Octobre 2021
-                            </a>
+                            <Date
+                            />
                         </header>
 
                         <div className="rooms">
@@ -114,7 +114,7 @@ export default class Home extends React.Component{
                         </div>
 
                         <div className="lowBody">
-                            <div className="datas">
+                            <div className="left">
 
                                 <Long
                                     className="temp"
@@ -136,9 +136,19 @@ export default class Home extends React.Component{
 
                             </div>
 
-                            <Big
-                                title="Intensité Lumineuse"
-                            />
+                            <div className="right">
+
+                                <Big
+                                    title="Intensité Lumineuse"
+                                />
+
+
+                                <Weather
+                                    title="Météo"
+                                />
+
+                            </div>
+
                         </div>
 
                     </main>

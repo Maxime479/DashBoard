@@ -20,7 +20,7 @@
 .longContainer{
     display: flex;
     flex-flow: row nowrap;
-    justify-content: start;
+    justify-content: flex-start;
 
 }
 

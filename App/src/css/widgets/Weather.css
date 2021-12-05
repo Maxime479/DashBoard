@@ -1,0 +1,68 @@
+
+
+
+
+
+
+.weather{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2em 1.2em;
+
+    padding-bottom: -1em;
+
+    /*width: 21.6em;*/
+    /*height: 16.2em;*/
+
+    border: var(--card--border);
+    box-sizing: border-box;
+    border-radius: 39px;
+
+    /*flex: none;*/
+    /*order: 1;*/
+    /*flex-grow: 1;*/
+    /*margin: 0px 21px;*/
+
+    background: var(--background--card--color);
+    background-repeat:  no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+.body{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+}
+
+.main{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 2em;
+}
+
+.leftWeather{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.tempWeather{
+    font-size: 2em;
+}
+
+.rightWeather{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+
+    font-size: 0.8em;
+
+}
+
+
