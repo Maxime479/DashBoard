@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Routes from '../Routes';
+// import Routes from '../Routes';
 
 import '../css/Navigation.css';
 
@@ -84,7 +84,7 @@ export default class Navigation extends React.Component{
                     </nav>
 
 
-                <Routes/>
+                {/*<Routes/>*/}
                 </div>
             );
 
