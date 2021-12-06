@@ -1,12 +1,6 @@
 import React from "react";
 import Navigation from "../Navigation";
-import SearchBar from "../SearchBar";
-import Square from "../cards/Square";
-import Long from "../cards/Long";
-import Big from "../cards/Big";
 import Profil from "../cards/Profil";
-import Test from "../addons/Test";
-import Member from "../nav/Member";
 import MemberList from "../list/MemberList";
 import ObjectID from "bson-objectid";
 

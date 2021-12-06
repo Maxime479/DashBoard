@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "../tools/Image";
 import Text from "../tools/Text"
-import ObjectID from "bson-objectid";
 
 import '../../css/addons/Member.css';
 
@@ -17,21 +16,6 @@ export default class Member extends React.Component{
         this.state = {
 
             converted: false,
-
-
-            // memberData :
-            //     {
-            //         _id: ObjectID("61a55ff945c22fa07e4f2cbc"),
-            //         first_name: 'Maxime',
-            //         last_name: 'Saurin',
-            //         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnujNmRpIR4M38nTjHOZQYdZk3DSykbotmbA&usqp=CAU',
-            //         login: 'Maxime479',
-            //         password: 'MaximeMdp8574',
-            //         birthdate: "2000-03-05T23:00:00.000+00:00",
-            //         rooms: 0,
-            //         devices: 0,
-            //     },
-
         };
 
     }
