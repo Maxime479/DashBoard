@@ -1,6 +1,6 @@
 # Smart Home DashBoard
 
-Projet de développement Web 
+###Projet de développement Web de fin de semestre
 
 Interface de gestion domotique personnalisé
 
@@ -19,18 +19,11 @@ Interface de gestion domotique personnalisé
 
 
 
+```sh
+           Maxime Saurin           Loïc Clemence           Teophile De Larquier
+```
 
 
 
 
 
-
-
-
-
-
-
-
-
-
--- Maxime Saurin / Loïc Clemence / Teophile De Larquier --
