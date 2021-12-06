@@ -141,3 +141,40 @@ main{
 }
 
 
+
+
+.notFoundContainer{
+
+  position: fixed;
+
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+
+
+  background-color: #3e3e3e;
+
+  height: 100%;
+  width: 100%;
+}
+
+
+.notFound{
+
+  /*height: 100%;*/
+
+  padding: 2em;
+
+  border-radius: 40px;
+
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+
+  background-color: #cacaca;
+
+  font-size: 5em;
+  color: #838A98;
+}
+
