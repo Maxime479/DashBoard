@@ -8,9 +8,9 @@ const mongoose = require("mongoose");
 
 
 
-var indexRouter = require('./routes/index');
+var devicesRouter = require('./routes/devices');
 var usersRouter = require('./routes/users');
-var serverRoute = require('./routes/server');
+
 
 
 
@@ -24,7 +24,7 @@ const password = "RskhvacdYRAD6Kr";
 const cluster = "Cluster1";
 const dbname = "dashboardDB";
 
-mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.yrusl.mongodb.net/${dbname}`, () =>
+mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.yrusl.mongodb.net/${dbname}`,() =>
     console.log('connect to db!')
 );
 
@@ -40,9 +40,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/post', serverRoute);
+app.use('/devices',devicesRouter)
+
 
 
 

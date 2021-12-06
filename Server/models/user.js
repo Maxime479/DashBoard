@@ -13,4 +13,4 @@ const UserModel = new mongoose.Schema({
     devices: parseInt('String')
 });
 
-module.exports = mongoose.model("source", UserModel);
+module.exports = mongoose.model("sources", UserModel);
