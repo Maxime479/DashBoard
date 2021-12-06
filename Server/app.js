@@ -11,6 +11,21 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+
+// connect to database
+
+const username = "lucho";
+const password = "RskhvacdYRAD6Kr";
+const cluster = "Cluster1";
+const dbname = "dashboardDB";
+
+mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.yrusl.mongodb.net/${dbname}`, () =>
+    console.log('connect to db!')
+);
+
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -42,6 +57,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 
 
