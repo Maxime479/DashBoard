@@ -6,8 +6,13 @@ var logger = require('morgan');
 var MongoDB = require('mongodb');
 const mongoose = require("mongoose");
 
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var serverRoute = require('./routes/server');
+
+
 
 var app = express();
 
@@ -25,7 +30,6 @@ mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.yrusl.mongodb
 
 
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -38,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/post', serverRoute);
 
 
 

@@ -6,13 +6,11 @@ const UserModel = new mongoose.Schema({
     photo: String,
     login: String,
     password: String,
-    birthday: parseInt('String'),
+    birthday: {
+        type: Date
+    },
     rooms: parseInt('String'),
     devices: parseInt('String')
 });
 
-
-const User = mongoose.model("User", UserModel);
-
-
-module.exports = User;
+module.exports = mongoose.model("user", UserModel);
