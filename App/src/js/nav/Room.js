@@ -14,7 +14,6 @@ export default class Device extends React.Component{
 
     constructor(props) {
         super(props);
-        // this.consoleIt = this.consoleIt.bind(this);
         this.showDeviceList = this.showDeviceList.bind(this);
 
 
@@ -55,9 +54,9 @@ export default class Device extends React.Component{
         }
     }
 
-    consoleIt = () => {
-        console.log("works");
-    }
+    // consoleIt = () => {
+    //     console.log("works");
+    // }
 
     makeDeviceListComp = () => {
 
@@ -65,8 +64,6 @@ export default class Device extends React.Component{
         let data = this.state.roomData;
 
         for(let i=0; i<data.deviceList.length; i++){
-
-            this.consoleIt();
 
             deviceListComp.push(
                 <Text
@@ -83,10 +80,9 @@ export default class Device extends React.Component{
 
     componentDidMount() {
         this.setState({roomData: this.props.caller})
-
-
-
     }
+
+
 
     componentDidUpdate(prevState) {
         if(this.state.roomData.nbDevices !== 0 && !this.state.listMade){

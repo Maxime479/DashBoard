@@ -3,7 +3,6 @@ import Navigation from "../Navigation";
 import Profil from "../cards/Profil";
 import ObjectID from "bson-objectid";
 import RoomList from "../list/RoomList";
-import Room from "../nav/Room";
 
 
 export default class Rooms extends React.Component{
@@ -198,66 +197,6 @@ export default class Rooms extends React.Component{
             </div>
 
         )
-
-
-
-        // if(this.state.roomsData === undefined || this.state.roomsData.nbDevices === 0){
-        //     console.log("EMPTY");
-        //
-        //     return (
-        //
-        //         <div className="App">
-        //
-        //             <header className="mainHeader">
-        //                 <h1>DashBoard</h1>
-        //             </header>
-        //
-        //             <body className="mainBody">
-        //
-        //             <aside className="navContainer">
-        //                 <Navigation
-        //                     selected="rooms"
-        //                 />
-        //             </aside>
-        //
-        //
-        //             <main>
-        //
-        //
-        //
-        //
-        //                 <div>
-        //                     Data Loading...
-        //                 </div>
-        //
-        //             </main>
-        //
-        //
-        //             <aside className="profilContainer">
-        //                 <Profil
-        //                     username="Maxime"
-        //                 />
-        //             </aside>
-        //
-        //             </body>
-        //
-        //
-        //         </div>
-        //
-        //
-        //
-        //     )
-        // }else{
-        //     console.log("LOADED");
-        //
-        //
-        //
-        //
-        //
-        //
-        // }
-
-
 
 
     }
