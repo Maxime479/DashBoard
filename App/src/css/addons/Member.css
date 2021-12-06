@@ -54,3 +54,12 @@
 .bold{
     font-weight: bold;
 }
+
+
+
+.memberListContainer{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    gap: 2em;
+}

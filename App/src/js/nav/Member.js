@@ -1,25 +1,102 @@
 import React from "react";
 import Image from "../tools/Image";
 import Text from "../tools/Text"
-
-import PlusButton from "../../img/button/PlusButton.png"
-import MinusButton from "../../img/button/MinusButton.png"
+import ObjectID from "bson-objectid";
 
 import '../../css/addons/Member.css';
 
+
 export default class Member extends React.Component{
+
+
+    constructor(props) {
+        super(props);
+
+
+
+        this.state = {
+
+            converted: false,
+
+
+            // memberData :
+            //     {
+            //         _id: ObjectID("61a55ff945c22fa07e4f2cbc"),
+            //         first_name: 'Maxime',
+            //         last_name: 'Saurin',
+            //         photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnujNmRpIR4M38nTjHOZQYdZk3DSykbotmbA&usqp=CAU',
+            //         login: 'Maxime479',
+            //         password: 'MaximeMdp8574',
+            //         birthdate: "2000-03-05T23:00:00.000+00:00",
+            //         rooms: 0,
+            //         devices: 0,
+            //     },
+
+        };
+
+    }
+
+
+    convertDate = (timestamp) => {
+
+        let day, month, year;
+
+        day = timestamp.slice(8, 10);
+        month = timestamp.slice(5, 7);
+        year = timestamp.slice(0, 4);
+
+
+        let newDate = day + "/" + month + "/" + year;
+
+        let data = this.state.memberData;
+        data.birthdate = newDate;
+        this.setState({memberData: data});
+        this.setState({converted: true});
+
+        console.log("converted");
+
+    }
+
+
+
+
+
+    componentDidMount() {
+        this.setState({memberData: this.props.caller})
+    }
+
+
+
+
+    componentDidUpdate(prevState) {
+        if(this.state.memberData !== undefined && !this.state.converted){
+            this.convertDate(this.state.memberData.birthdate);
+        }
+    }
+
+
+
+
+
+
+
     render(){
+
+        let newMember = this.props.caller;
+
+
+
         return(
             <div className={"memberInPage " + this.props.className}>
 
                 <Text
-                    text="Maxime Saurin"
+                    text={newMember.first_name}
                     className="memberName"
                 />
 
 
                 <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnujNmRpIR4M38nTjHOZQYdZk3DSykbotmbA&usqp=CAU"
+                    src={newMember.photo}
                     className="memberImage"
 
                 />
@@ -32,7 +109,7 @@ export default class Member extends React.Component{
                         />
 
                         <Text
-                            text="4"
+                            text={newMember.rooms}
                         />
                     </div>
 
@@ -43,7 +120,7 @@ export default class Member extends React.Component{
                         />
 
                         <Text
-                            text="12"
+                            text={newMember.devices}
                         />
                     </div>
 
@@ -54,7 +131,7 @@ export default class Member extends React.Component{
                         />
 
                         <Text
-                            text="Administrateur"
+                            text={newMember.privileges}
                         />
                     </div>
                 </div>
@@ -67,7 +144,7 @@ export default class Member extends React.Component{
                         />
 
                         <Text
-                            text="Maxime479"
+                            text={newMember.login}
                         />
                     </div>
 
@@ -89,7 +166,7 @@ export default class Member extends React.Component{
                         />
 
                         <Text
-                            text="06/03/2000"
+                            text={!this.state.memberData ? "Loading..." : this.state.memberData.birthdate}
                         />
                     </div>
                 </div>
