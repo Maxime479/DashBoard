@@ -77,4 +77,34 @@
     grid-row-gap: 2em;
 }
 
+@media screen and (max-width: 1500px) {
+    .deviceListContainer{
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 2em;
+        grid-row-gap: 2em;
+    }
+}
 
+
+@media screen and (max-width: 1300px) {
+    .deviceListContainer{
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2em;
+        grid-row-gap: 2em;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .deviceListContainer{
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+    }
+
+    main:not(.homeMain){
+        width: 100%;
+    }
+
+
+}

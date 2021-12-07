@@ -1,6 +1,5 @@
 import React from "react";
 import Text from "../tools/Text";
-import Logo from "../tools/Logo";
 import LittleRoom from "../props/LittleRoom";
 import Head from "../props/Head";
 
@@ -26,12 +25,12 @@ export default class Square extends React.Component{
 
                         <Text
                             className="number "
-                            text={"196"}
+                            text={this.props.data}
                         />
 
                         <Text
                             className="unit "
-                            text={"kWh"}
+                            text="kWh"
                         />
 
                     </div>

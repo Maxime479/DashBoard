@@ -17,6 +17,14 @@
     border-radius: 39px;
 }
 
+@media screen and (max-width: 990px) {
+    .long{
+        width: min-content;
+    }
+}
+
+
+
 .longContainer{
     display: flex;
     flex-flow: row nowrap;

@@ -28,7 +28,7 @@ export default class Device extends React.Component{
                     _id: ObjectID("61acc6f8b230570391d7ca62"),
                     name: 'Lampe',
                     room: 'Salon',
-                    on: false,
+                    state: false,
                     type: 'light',
                     icon: 'https://www.icone-png.com/png/15/14621.png',
                     data: 0,
@@ -44,7 +44,7 @@ export default class Device extends React.Component{
 
     loadSwitchState = () => {
 
-        if(this.state.deviceData.on){
+        if(this.state.deviceData.state){
             this.setState({switchButton: OnButton});
             this.setState({onState: true});
         }else{
@@ -56,7 +56,7 @@ export default class Device extends React.Component{
 
 
     componentDidUpdate(prevState){
-        if(this.state.onState !== this.state.deviceData.on){
+        if(this.state.onState !== this.state.deviceData.state){
 
             this.loadSwitchState();
         }
@@ -72,7 +72,7 @@ export default class Device extends React.Component{
             {
             params: {
                 id: id,
-                on: state,
+                state: state,
             },
             // headers: {
             //     'x-rapidapi-host': 'world-clock.p.rapidapi.com',

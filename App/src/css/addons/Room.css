@@ -65,3 +65,30 @@
     grid-column-gap: 2em;
     grid-row-gap: 2em;
 }
+
+
+@media screen and (max-width: 1450px) {
+    .roomListContainer{
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 2em;
+        grid-row-gap: 2em;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    .roomListContainer{
+        grid-template-columns: repeat(1, 1fr);
+        margin: 0 auto;
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+    }
+
+    main:not(.homeMain){
+        width: 100%;
+    }
+
+
+}
+
+

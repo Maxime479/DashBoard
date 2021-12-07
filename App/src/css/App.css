@@ -6,15 +6,18 @@
 
 
 .App {
-  /*text-align: center;*/
   font-family: 'Roboto', serif;
 }
 
 /*24px = 1.5em*/
 /*0.0625*/
 
+
 header h1{
   text-align: center;
+  font-size: 3em;
+  color: #4b6fb8;
+
 }
 
 
@@ -31,12 +34,13 @@ header h1{
 .mainBody{
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
+  gap: 2em;
+
   background-color: #FBFBFB;
 
-  padding: 2em 5em;
-
+  padding: 2em 3em;
 }
 
 
@@ -44,19 +48,28 @@ header h1{
 main{
   display: flex;
   flex-flow: column nowrap;
-  /*background-color: darkgrey;*/
+  width: fit-content;
 }
 
 /*Header of mainBody : SearchBar + date*/
 .mainBodyHeader{
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 1em;
 
-  /*background-color: #838A98;*/
-  /*width: 42em;*/
   width: 100%;
+}
+
+@media screen and (max-width: 786px) {
+  .mainBodyHeader{
+    justify-content: center;
+  }
+  .searchBar{
+    order: 2;
+    margin-bottom: 1em;
+  }
 }
 
 /*SearchBar*/
@@ -74,6 +87,13 @@ main{
   border-radius: 21px;
 
 }
+
+@media screen and (max-width: 400px) {
+  .searchBar{
+    width: 80%;
+  }
+}
+
 
 /*Search Input*/
 .searchBar input{
@@ -97,18 +117,68 @@ main{
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   margin: 1em 0;
   gap: 1em;
 }
 
+@media screen and (max-width: 400px) {
+  .rooms{
+    flex-flow: column;
+  }
+
+  .big{
+    width: 80% !important;
+    height: 60% !important;
+    justify-content: flex-start !important;
+    gap: 1.5em;
+  }
+  .slider{
+    --size: 50%;
+    width: var(--size) !important;
+    height: 6em !important;
+    /*margin-top: -2em;*/
+
+  }
+  .right{
+    align-items: center !important;
+  }
+}
+
+
 .lowBody{
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: space-between;
 }
+
+
+@media screen and (max-width: 906px) {
+  .lowBody{
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .big{
+    order: 2;
+  }
+
+  .left{
+    gap: 1em !important;
+    order: 2;
+  }
+
+  .rooms {
+    max-width: 30em;
+  }
+  .homeMain{
+    align-items: center;
+  }
+}
+
+
 
 .left{
   display: flex;
@@ -125,7 +195,12 @@ main{
 
 .date{
   color: var(--text-gray);
+  display: flex;
+  flex-flow: row nowrap;
+  padding-right: 1em;
 }
+
+
 
 .day{
   font-weight: bold;
@@ -161,9 +236,6 @@ main{
 
 
 .notFound{
-
-  /*height: 100%;*/
-
   padding: 2em;
 
   border-radius: 40px;
@@ -177,4 +249,77 @@ main{
   font-size: 5em;
   color: #838A98;
 }
+
+
+
+
+/*Smarphone size*/
+@media screen and (max-width: 480px) {
+  .navContainer{
+    /*display: none !important;*/
+    position: fixed !important;
+    opacity: 1 !important;
+    z-index: 100;
+    /*margin-top: 0;*/
+    margin: -7em auto auto 1em !important;
+  }
+
+  .mainBody{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: flex-start !important;
+    /*width: 100% !important;*/
+  }
+
+  .navButton{
+    display: block !important;
+  }
+
+  .memberListContainer{
+    justify-content: center;
+  }
+
+}
+
+
+@media screen and (min-width: 480px) {
+  .navContainer{
+    display: flex !important;
+  }
+}
+
+
+
+@media screen and (max-width: 1175px) {
+
+  .profilContainer{
+    display: none;
+  }
+
+  .mainBody{
+    justify-content: center;
+    gap: 1em;
+  }
+
+}
+
+
+.navButton{
+  display: none;
+  width: 1.5em;
+  position: fixed;
+  margin-left: 1em;
+  margin-top: 0.5em;
+}
+
+/*!*Tablet size*!*/
+/*@media screen and (max-width: 760px) {*/
+
+
+/*}*/
+/*!*Desktop size*!*/
+/*@media screen and (max-width: 1280px) {*/
+
+
+/*}*/
 

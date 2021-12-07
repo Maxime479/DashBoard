@@ -61,5 +61,36 @@
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
+    justify-content: center;
     gap: 2em;
+
+    /*width: 60em;*/
+    background-color: #838A98;
 }
+
+@media screen and (min-width: 1580px) {
+    .memberListContainer{
+        width: max-content;
+    }
+}
+
+@media screen and (max-width: 1580px) {
+    .memberListContainer{
+        width: 40em;
+    }
+}
+@media screen and (max-width: 650px) {
+    .memberListContainer{
+        width: 20em;
+    }
+
+    main{
+        align-items: center;
+    }
+}
+/*@media screen and (max-width: 1450px) {*/
+/*    .memberListContainer{*/
+/*        */
+/*        */
+/*    }*/
+/*}*/

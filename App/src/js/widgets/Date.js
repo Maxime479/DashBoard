@@ -147,7 +147,6 @@ export default class Date extends React.Component{
 
     componentDidMount() {
 
-        let dateApiData;
         axios.get('https://world-clock.p.rapidapi.com/json/utc/now', {
             headers: {
                 'x-rapidapi-host': 'world-clock.p.rapidapi.com',
@@ -180,13 +179,20 @@ export default class Date extends React.Component{
 
 
     render(){
+
+        const space = <span style={{opacity: "0"}}>_</span>;
+
         return(
             <a className="date">
 
-                <span className="day">{this.state.day}, </span>
+                <span className="day">{this.state.day},{space} </span>
                 {this.state.date}
 
+
+
             </a>
+
+
 
 
         )

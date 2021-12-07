@@ -1,10 +1,10 @@
 import React from "react";
 import Navigation from "../Navigation";
 import Profil from "../cards/Profil";
-import Device from "../nav/Device";
 import DeviceList from "../list/DeviceList";
 
 import ObjectID from "bson-objectid";
+import Image from "../tools/Image";
 
 
 
@@ -18,12 +18,22 @@ export default class Devices extends React.Component{
 
         this.state = {
 
+            navStyles: {
+                none: {display: 'none'},
+                block: {display: 'flex'},
+
+            },
+
+            navStyle: {
+                display: 'flex'
+            },
+
             devicesData : [
                 {
                     _id: ObjectID("61acc6f8b230570391d7ca62"),
                     name: 'Lampe',
                     room: 'Salon',
-                    on: false,
+                    state: false,
                     type: 'light',
                     icon: 'https://www.icone-png.com/png/15/14621.png',
                     data: 0,
@@ -33,7 +43,7 @@ export default class Devices extends React.Component{
                     _id: ObjectID("61acc6f8b230570391d7ca62"),
                     name: 'Multiprise',
                     room: 'Chambre',
-                    on: true,
+                    state: true,
                     type: 'power_strip',
                     icon: 'https://icon-library.com/images/382_electrical-electric-power-socket-512.png',
                     data: 25,
@@ -43,7 +53,107 @@ export default class Devices extends React.Component{
                     _id: ObjectID("61acc6f8b230570391d7ca62"),
                     name: 'Capteur d\'humidité',
                     room: 'Salon',
-                    on: true,
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
+                    type: 'sensor',
+                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
+                    data: 32,
+                    unit: '%',
+                },
+                {
+                    _id: ObjectID("61acc6f8b230570391d7ca62"),
+                    name: 'Capteur d\'humidité',
+                    room: 'Salon',
+                    state: true,
                     type: 'sensor',
                     icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
                     data: 32,
@@ -53,6 +163,21 @@ export default class Devices extends React.Component{
             ],
 
         };
+
+        this.displayNav = this.displayNav.bind(this);
+
+    }
+
+    displayNav = () => {
+
+        let style = this.state.navStyle
+
+        if(style.display.includes('none')){
+            this.setState({navStyle: this.state.navStyles.block})
+        }else{
+
+            this.setState({navStyle: this.state.navStyles.none})
+        }
 
     }
 
@@ -64,13 +189,19 @@ export default class Devices extends React.Component{
         return(
             <div className="App">
 
+                <Image
+                    src="https://www.pngrepo.com/png/311018/512/navigation.png"
+                    onClick={this.displayNav}
+                    className="navButton"
+                />
+
                 <header className="mainHeader">
-                    <h1>DashBoard</h1>
+                    <h1>Smart Home DashBoard</h1>
                 </header>
 
                 <body className="mainBody">
 
-                    <aside className="navContainer">
+                    <aside className="navContainer" style={this.state.navStyle}>
                         <Navigation
                             selected="devices"
                         />
