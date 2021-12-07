@@ -12,6 +12,7 @@ import Date from "../widgets/Date";
 import Weather from "../widgets/Weather";
 import ObjectID from "bson-objectid";
 import Image from "../tools/Image";
+import axios from "axios";
 
 
 export default class Home extends React.Component{
@@ -175,7 +176,7 @@ export default class Home extends React.Component{
                 tempDataMean += allTemp[i];
             }
             tempDataMean = tempDataMean/allTemp.length;
-            temp = tempDataMean;
+            temp = tempDataMean | 0;
             tempDataMean=0;
         }
         if(allHum.length){
@@ -183,7 +184,7 @@ export default class Home extends React.Component{
                 tempDataMean += allHum[i];
             }
             tempDataMean = tempDataMean/allHum.length;
-            hum = tempDataMean;
+            hum = tempDataMean | 0;
             tempDataMean=0;
         }
         if(allLum.length){
@@ -191,7 +192,7 @@ export default class Home extends React.Component{
                 tempDataMean += allLum[i];
             }
             tempDataMean = tempDataMean/allLum.length;
-            lum = tempDataMean;
+            lum = tempDataMean | 0;
         }
 
         this.setState({sensor: {
@@ -214,21 +215,46 @@ export default class Home extends React.Component{
 
 
 
-    componentDidMount(){
 
+    // componentDidUpdate(prevState){
+    //
+    //     if(prevState.devicesData !== this.state.devicesData){
+    //         this.consUpdate()
+    //         console.log("Consumption Updated")
+    //     }
+    //
+    // }
+
+
+    getDevicesData = () => {
+
+        axios.get('/devices')
+            .then(response => {
+                this.setState({devicesData: response.data})
+            })
+    }
+
+    componentDidMount() {
+
+        this.getDevicesData()
+
+    }
+
+    componentDidUpdate(prevState) {
+        if(prevState.devicesData !== this.state.devicesData){
+            this.getDevicesData()
+            console.log("UPDATE")
+        }
+
+        if(this.state.consumption.lounge === 0 && this.state.devicesData !== undefined){
             this.dataUpdate()
             console.log("Consumption Innitialized")
+        }else{
+            console.log("NOPE")
+        }
 
     }
 
-    componentDidUpdate(prevState){
-
-        // if(prevState.devicesData !== this.state.devicesData){
-        //     this.consUpdate()
-        //     console.log("Consumption Updated")
-        // }
-
-    }
 
 
 
