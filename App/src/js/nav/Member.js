@@ -82,6 +82,7 @@ export default class Member extends React.Component{
                 <Image
                     src={newMember.photo}
                     className="memberImage"
+                    alt="photo de profil"
 
                 />
 

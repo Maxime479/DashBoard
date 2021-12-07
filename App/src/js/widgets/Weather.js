@@ -17,129 +17,10 @@ export default class Weather extends React.Component{
         this.state = {
             iconed: false,
             converted: false,
+            iconCode: '04d',
 
 
         };
-
-    }
-
-    exeampleRequestAxios = () => {
-
-        const data = undefined;
-
-        axios.post('url', {"body":data}, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        )
-
-    }
-
-
-    translateDay = (day) => {
-
-        let frenchDay = "";
-
-        switch (day){
-            case "Monday":
-                frenchDay = "Lundi";
-                break;
-            case "Tuesday":
-                frenchDay = "Mardi";
-                break;
-            case "Wednesday":
-                frenchDay = "Mercredi";
-                break;
-            case "Thursday":
-                frenchDay = "Jeudi";
-                break;
-            case "Friday":
-                frenchDay = "Vendredi";
-                break;
-            case "Saturday":
-                frenchDay = "Samedi";
-                break;
-            case "Sunday":
-                frenchDay = "Dimanche";
-                break;
-            default:
-                frenchDay = "Unfound";
-                break;
-        }
-
-        this.setState({day: frenchDay});
-
-    }
-
-    findMonth = (month) => {
-
-        let strMonth = "";
-
-        switch (month){
-            case "01":
-                strMonth = "Janvier";
-                break;
-            case "02":
-                strMonth = "Février";
-                break;
-            case "03":
-                strMonth = "Mars";
-                break;
-            case "04":
-                strMonth = "Avril";
-                break;
-            case "05":
-                strMonth = "Mai";
-                break;
-            case "06":
-                strMonth = "Juin";
-                break;
-            case "07":
-                strMonth = "Juillet";
-                break;
-            case "08":
-                strMonth = "Août";
-                break;
-            case "09":
-                strMonth = "Septembre";
-                break;
-            case "10":
-                strMonth = "Octobre";
-                break;
-            case "11":
-                strMonth = "Novembre";
-                break;
-            case "12":
-                strMonth = "Décembre";
-                break;
-            default:
-                strMonth = "Unfound";
-                break;
-        }
-
-        return strMonth;
-
-    }
-
-
-    convertDate = (date) => {
-
-        // date in timestamp format : "2021-12-04T20:44Z";
-
-        let convertedDate;
-        let day, month, year;
-
-        day = parseInt(date.slice(8, 10));
-        month = this.findMonth(date.slice(5, 7));
-        year = date.slice(0, 4);
-
-
-
-
-        convertedDate = day + " " + month + " " + year;
-
-        this.setState({date: convertedDate});
 
     }
 
@@ -153,23 +34,37 @@ export default class Weather extends React.Component{
             .then(response => {
 
                 const data = response.data;
+                console.log(response)
 
-                let location = data.location.name + ", " + data.location.region + ", " + data.location.country
+                let location, temp, humidity, precip, wind;
+
+                if(response.data.success){
+                    location = data.location.name + ", " + data.location.region + ", " + data.location.country
+                    temp = data.current.temperature + "°C"
+                    humidity = data.current.humidity + " %"
+                    precip = data.current.precip + " mm"
+                    wind = data.current.wind_speed + " km/h"
+                }else{
+                    location = "Paris" + ", " + "Ile-de-France" + ", " + "France"
+                    temp = 6 + "°C"
+                    humidity = 30 + " %"
+                    precip = 2 + " mm"
+                    wind = 12 + " km/h"
+                }
+
+
+
                 this.setState({location: location})
 
-                let temp = data.current.temperature + "°C"
                 this.setState({temp: temp})
 
                 // let icon = "http://openweathermap.org/img/wn/" + "" + "@2x.png"
                 // this.setState({icon: data.current.weather_icons})
 
-                let humidity = data.current.humidity + " %"
                 this.setState({humidity: humidity})
 
-                let precip = data.current.precip + " mm"
                 this.setState({precip: precip})
 
-                let wind = data.current.wind_speed + " km/h"
                 this.setState({wind: wind})
             })
 
@@ -189,12 +84,15 @@ export default class Weather extends React.Component{
 
         if(this.state.iconCode !== undefined && this.state.iconed === false){
 
+            let parisCode = "04d"
 
-            let icon = "http://openweathermap.org/img/wn/" + this.state.iconCode + "@2x.png"
+
+            // let icon = "http://openweathermap.org/img/wn/" + this.state.iconCode + "@2x.png"
+            let icon = "http://openweathermap.org/img/wn/" + parisCode + "@2x.png"
             this.setState({icon: icon})
 
             console.log("Icon Loaded")
-            this.setState({ iconed: true})
+            this.setState({iconed: true})
         }
     }
 
@@ -204,12 +102,6 @@ export default class Weather extends React.Component{
     render(){
         return(
             <div className={"weather " + this.props.className}>
-
-                {/*<Head*/}
-                {/*    text={this.props.title}*/}
-                {/*    className="headBig"*/}
-                {/*    classname="titleBig"*/}
-                {/*/>*/}
 
 
                 <div className="body">
@@ -224,6 +116,7 @@ export default class Weather extends React.Component{
                             <Image
                                 src={this.state.icon}
                                 className="weatherImage"
+                                alt="icon météo"
                             />
 
                             <a className="tempWeather">{this.state.temp}</a>

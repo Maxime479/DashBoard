@@ -4,11 +4,6 @@ import Device from "../nav/Device";
 
 export default class DeviceList extends React.Component{
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.props.id !== prevProps.id) {
-    //         this.setDefaultTranslation(this.props.context)
-    //     }
-    // }
 
     render() {
 

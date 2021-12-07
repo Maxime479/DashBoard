@@ -196,6 +196,7 @@ export default class Rooms extends React.Component{
                     src="https://www.pngrepo.com/png/311018/512/navigation.png"
                     onClick={this.displayNav}
                     className="navButton"
+                    alt="boutton de navigation"
                 />
 
                 <header className="mainHeader">

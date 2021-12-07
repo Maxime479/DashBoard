@@ -47,6 +47,8 @@
 
     display: flex;
     flex-flow: row nowrap;
+
+    text-align: center;
 }
 
 .deviceRoom{

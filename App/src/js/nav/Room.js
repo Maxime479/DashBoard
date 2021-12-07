@@ -108,6 +108,7 @@ export default class Device extends React.Component{
                 <Image
                     src={newRoom.icon}
                     className="roomImage"
+                    alt="Icon Pièce"
 
                 />
 
@@ -134,6 +135,7 @@ export default class Device extends React.Component{
                         src={this.state.listDeviceButton}
                         className="listDeviceButton"
                         onClick={this.showDeviceList}
+                        alt="boutton de liste d'appareil"
                     />
 
                 </div>

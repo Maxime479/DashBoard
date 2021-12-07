@@ -6,12 +6,11 @@ export default class Image extends React.Component{
         return(
             <div>
                 <img
-                    alt="photo de profil"
+                    alt={this.props.alt}
                     src={this.props.src}
                     onClick={this.props.onClick}
                     className={"image " + this.props.className}
                 />
-
             </div>
         )
     }

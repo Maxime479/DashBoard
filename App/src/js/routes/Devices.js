@@ -18,6 +18,8 @@ export default class Devices extends React.Component{
 
         this.state = {
 
+            loaded: true,
+
             navStyles: {
                 none: {display: 'none'},
                 block: {display: 'flex'},
@@ -53,6 +55,8 @@ export default class Devices extends React.Component{
 
         axios.get('/devices')
             .then(response => {
+                console.log(response)
+                console.log(response.data)
                 this.setState({devicesData: response.data})
             })
     }
@@ -61,12 +65,18 @@ export default class Devices extends React.Component{
 
         this.getDevicesData()
 
+        console.log("STATE")
+        console.log(this.state)
+        console.log("STATE")
+
+
     }
 
     componentDidUpdate(prevState) {
         if(prevState.devicesData !== this.state.devicesData){
             this.getDevicesData()
             console.log("UPDATE")
+
         }
     }
 
@@ -76,20 +86,32 @@ export default class Devices extends React.Component{
 
     render() {
 
-        return(
-            <div className="App">
+        if(this.state.devicesData === undefined){
+            console.log("EMPTY");
 
-                <Image
-                    src="https://www.pngrepo.com/png/311018/512/navigation.png"
-                    onClick={this.displayNav}
-                    className="navButton"
-                />
+            return (
+                <div>
+                    Data Loading...
+                </div>
+            )
+        }else {
+            console.log("LOADED");
 
-                <header className="mainHeader">
-                    <h1>Smart Home DashBoard</h1>
-                </header>
+            return(
+                <div className="App">
 
-                <body className="mainBody">
+                    <Image
+                        src="https://www.pngrepo.com/png/311018/512/navigation.png"
+                        onClick={this.displayNav}
+                        className="navButton"
+                        alt="boutton de navigation"
+                    />
+
+                    <header className="mainHeader">
+                        <h1>Smart Home DashBoard</h1>
+                    </header>
+
+                    <body className="mainBody">
 
                     <aside className="navContainer" style={this.state.navStyle}>
                         <Navigation
@@ -118,18 +140,26 @@ export default class Devices extends React.Component{
                     <aside className="profilContainer">
                         <Profil
                             username="Maxime"
+                            // loaded={this.state.loaded}
+                            // data={this.state.devicesData}
                         />
                     </aside>
 
-                </body>
+                    </body>
 
 
 
 
 
-            </div>
+                </div>
 
 
-        )
+            )
+
+
+        }
+
+
+
     }
 }

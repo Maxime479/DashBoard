@@ -13,7 +13,7 @@ export default class LittleRoom extends React.Component{
 
                 <Image
                     src={roomImg}
-                    alt="room image"
+                    alt="image pièce"
                     className={"roundRoomImage"}
                 />
 

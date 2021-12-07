@@ -1,7 +1,4 @@
 
-
-
-
 .myDevices{
     display: flex;
     flex-flow: column nowrap;
@@ -18,11 +15,26 @@
 
     padding: 1em 0;
     margin: 2em 1em 1em 1em;
+    /*margin: 2em 0.5em 0.5em 1em;*/
 }
 
 .myDevicesHead{
     width: 85%;
     margin-bottom: 1em;
     color: var(--text-gray);
+}
+
+.devicesContainer{
+    overflow-y: scroll;
+
+    height: 18em;
+
+    padding: 0 1.8em;
+
+    /*background-color: grey;*/
+}
+
+.littleIcon{
+    width: 2.7em;
 }
 

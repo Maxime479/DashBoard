@@ -34,7 +34,12 @@
     }
 }
 
-@media screen and (max-width: 1430px) {
+/*@media screen and (max-width: 1820px) {*/
+/*    .upStats{*/
+/*        width: 100em;*/
+/*    }*/
+/*}*/
+@media screen and (max-width: 1820px) {
     .upStats{
         width: 50em;
     }
