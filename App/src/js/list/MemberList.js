@@ -9,9 +9,9 @@ export default class MemberList extends React.Component{
         let memberList = [];
 
         const extractData = this.props.caller;
-        console.log("_____extractData______");
-        console.log(this.props.caller);
-        console.log("_____extractData______");
+        // console.log("_____extractData______");
+        // console.log(this.props.caller);
+        // console.log("_____extractData______");
 
 
         if(extractData === undefined){
@@ -29,11 +29,11 @@ export default class MemberList extends React.Component{
 
             for(let memberIndex=0; memberIndex<extractData.length; memberIndex++){
 
-                console.log("_____LISTE______");
-                i++;
-                console.log(i);
-                console.log(extractData[memberIndex]);
-                console.log("_____LISTE______");
+                // console.log("_____LISTE______");
+                // i++;
+                // console.log(i);
+                // console.log(extractData[memberIndex]);
+                // console.log("_____LISTE______");
 
                 memberList.push(
                     <Member

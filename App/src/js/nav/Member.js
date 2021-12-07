@@ -37,7 +37,7 @@ export default class Member extends React.Component{
         this.setState({memberData: data});
         this.setState({converted: true});
 
-        console.log("converted");
+        // console.log("converted");
 
     }
 
