@@ -15,16 +15,19 @@ router.post('/', async (req,res) =>{
   const device = new Device({
     name : req.body.name,
     room: req.body.room,
-    state: req.body.state,
     type: req.body.type,
     icon: req.body.icon,
     data: req.body.data,
-    unit:req.body.unit
+    unit:req.body.unit,
+    stored_data: req.body.stored_data,
+    state: req.body.state
   });
 
   try{
     const savedDevices = await device.save();
+    const PushData = await device.stored_data.push(donne);
     res.json(savedDevices);
+    res.json(PushData);
   }catch (err){
     res.json({message: err});
   }
