@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const UserModel = new mongoose.Schema({
-    fisrt_name : String,
+    first_name : String,
     last_name: String,
     photo: String,
     login: String,
@@ -10,7 +10,8 @@ const UserModel = new mongoose.Schema({
         type: Date
     },
     rooms: parseInt('String'),
-    devices: parseInt('String')
+    devices: parseInt('String'),
+    privileges: parseInt("String")
 });
 
 module.exports = mongoose.model("sources", UserModel);

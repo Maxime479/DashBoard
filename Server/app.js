@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var MongoDB = require('mongodb');
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 
 
@@ -14,13 +15,14 @@ var usersRouter = require('./routes/users');
 
 
 
+
 var app = express();
 
 
 // connect to database
 
-const username = "lucho";
-const password = "RskhvacdYRAD6Kr";
+const username = "TheophTTV";
+  const password = "Theophile69";
 const cluster = "Cluster1";
 const dbname = "dashboardDB";
 
@@ -33,7 +35,7 @@ mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.yrusl.mongodb
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
