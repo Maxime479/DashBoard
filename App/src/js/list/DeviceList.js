@@ -22,10 +22,10 @@ export default class DeviceList extends React.Component{
 
 
         const extractData = this.props.caller;
-        console.log("_____extractData______");
-        console.log(this.props.caller);
-        console.log("_____extractData______");
-
+        // console.log("_____extractData______");
+        // console.log(this.props.caller);
+        // console.log("_____extractData______");
+        //
 
         if(extractData === undefined){
             console.log("EMPTY");
@@ -42,12 +42,14 @@ export default class DeviceList extends React.Component{
 
             for(let deviceIndex=0; deviceIndex<extractData.length; deviceIndex++){
 
+/*
                 console.log("_____LISTE______");
                 i++;
                 console.log(i);
                 console.log(extractData[deviceIndex]);
                 console.log("_____LISTE______");
 
+*/
                 deviceList.push(
                     <Device
                         caller={extractData[deviceIndex]}

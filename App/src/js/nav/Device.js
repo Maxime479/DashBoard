@@ -21,20 +21,6 @@ export default class Device extends React.Component{
             switchButton: OffButton,
             onState: false,
             innit: false,
-
-
-            deviceData :
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Lampe',
-                    room: 'Salon',
-                    state: false,
-                    type: 'light',
-                    icon: 'https://www.icone-png.com/png/15/14621.png',
-                    data: 0,
-                    unit: 'lm',
-                },
-
         };
 
         this.handleChange = this.handleChange.bind(this);

@@ -3,8 +3,8 @@ import Navigation from "../Navigation";
 import Profil from "../cards/Profil";
 import DeviceList from "../list/DeviceList";
 
-import ObjectID from "bson-objectid";
 import Image from "../tools/Image";
+import axios from "axios";
 
 
 
@@ -28,140 +28,6 @@ export default class Devices extends React.Component{
                 display: 'flex'
             },
 
-            devicesData : [
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Lampe',
-                    room: 'Salon',
-                    state: false,
-                    type: 'light',
-                    icon: 'https://www.icone-png.com/png/15/14621.png',
-                    data: 0,
-                    unit: 'lm',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Multiprise',
-                    room: 'Chambre',
-                    state: true,
-                    type: 'power_strip',
-                    icon: 'https://icon-library.com/images/382_electrical-electric-power-socket-512.png',
-                    data: 25,
-                    unit: 'kWh',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-
-            ],
-
         };
 
         this.displayNav = this.displayNav.bind(this);
@@ -180,6 +46,30 @@ export default class Devices extends React.Component{
         }
 
     }
+
+
+
+    getDevicesData = () => {
+
+        axios.get('/devices')
+            .then(response => {
+                this.setState({devicesData: response.data})
+            })
+    }
+
+    componentDidMount() {
+
+        this.getDevicesData()
+
+    }
+
+    componentDidUpdate(prevState) {
+        if(prevState.devicesData !== this.state.devicesData){
+            this.getDevicesData()
+            console.log("UPDATE")
+        }
+    }
+
 
 
 
