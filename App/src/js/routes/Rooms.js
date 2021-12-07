@@ -4,6 +4,7 @@ import Profil from "../cards/Profil";
 import ObjectID from "bson-objectid";
 import RoomList from "../list/RoomList";
 import Image from "../tools/Image";
+import axios from "axios";
 
 
 export default class Rooms extends React.Component{
@@ -24,39 +25,6 @@ export default class Rooms extends React.Component{
                 display: 'flex'
             },
 
-            devicesData : [
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Lampe',
-                    room: 'Salon',
-                    state: false,
-                    type: 'light',
-                    icon: 'https://www.icone-png.com/png/15/14621.png',
-                    data: 0,
-                    unit: 'lm',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Multiprise',
-                    room: 'Chambre',
-                    state: true,
-                    type: 'power_strip',
-                    icon: 'https://icon-library.com/images/382_electrical-electric-power-socket-512.png',
-                    data: 25,
-                    unit: 'kWh',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-
-            ],
 
             roomsData : [
                 {
@@ -79,6 +47,12 @@ export default class Rooms extends React.Component{
                     deviceList: [],
                     nbDevices: 0,
                     icon: 'https://www.pngrepo.com/png/194922/512/bathtub-bathroom.png',
+                },{
+                    _id: 4,
+                    name: 'Cuisine',
+                    deviceList: [],
+                    nbDevices: 0,
+                    icon: 'https://www.pngrepo.com/png/203037/512/kitchen.png',
                 },
 
 
@@ -109,13 +83,17 @@ export default class Rooms extends React.Component{
         let loungeList = [];
         let bedroomList = [];
         let bathroomList = [];
+        let kitchenList = [];
 
         let loungeCounter = 0;
         let bedroomCounter = 0;
         let bathroomCounter = 0;
+        let kitchenCounter = 0;
 
 
         let data = this.state.devicesData;
+
+        console.log(data)
         let newRoomsData = this.state.roomsData;
 
 
@@ -144,6 +122,10 @@ export default class Rooms extends React.Component{
                     bathroomList.push(data[deviceIndex].name);
                     bathroomCounter++;
                     break;
+                case "Cuisine":
+                    kitchenList.push(data[deviceIndex].name);
+                    kitchenCounter++;
+                    break;
                 default:
                     console.log("ERROR - Unknown Room")
                     console.log(data[deviceIndex])
@@ -161,9 +143,12 @@ export default class Rooms extends React.Component{
             newRoomsData[2].deviceList = bathroomList;
             newRoomsData[2].nbDevices = bathroomCounter;
 
-            // console.log("_____FINAL______");
-            // console.log(newRoomsData);
-            // console.log("_____FINAL______");
+            newRoomsData[3].deviceList = kitchenList;
+            newRoomsData[3].nbDevices = kitchenCounter;
+
+            console.log("_____FINAL______");
+            console.log(newRoomsData);
+            console.log("_____FINAL______");
 
 
             this.setState({roomsData: newRoomsData});
@@ -173,13 +158,35 @@ export default class Rooms extends React.Component{
     }
 
 
+    getDevicesData = () => {
+
+        axios.get('/devices')
+            .then(response => {
+                this.setState({devicesData: response.data})
+            })
+    }
+
     componentDidMount() {
-        if(this.state.roomsData[0].nbDevices === 0){
+
+        this.getDevicesData()
+
+    }
+
+    componentDidUpdate(prevState) {
+        if(prevState.devicesData !== this.state.devicesData){
+            this.getDevicesData()
             console.log("UPDATE")
+        }
+
+        if(this.state.roomsData[0].nbDevices === 0 && this.state.devicesData !== undefined){
+            console.log("Room data updated")
             this.updateRoomData();
+        }else{
+            console.log("NOPE")
         }
 
     }
+
 
 
     render() {
