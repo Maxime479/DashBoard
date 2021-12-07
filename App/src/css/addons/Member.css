@@ -63,9 +63,6 @@
     align-items: flex-start;
     justify-content: center;
     gap: 2em;
-
-    /*width: 60em;*/
-    background-color: #838A98;
 }
 
 @media screen and (min-width: 1580px) {

@@ -171,9 +171,6 @@ export default class Weather extends React.Component{
 
                 let wind = data.current.wind_speed + " km/h"
                 this.setState({wind: wind})
-
-
-                console.log(data)
             })
 
 
@@ -182,12 +179,6 @@ export default class Weather extends React.Component{
             .then(response => {
 
                 this.setState({iconCode: response.data.weather[0].icon})
-
-
-
-                console.log("Icon")
-                console.log(response.data)
-                console.log("Icon")
             })
 
 
