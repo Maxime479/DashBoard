@@ -181,8 +181,6 @@ export default class Rooms extends React.Component{
         if(this.state.roomsData[0].nbDevices === 0 && this.state.devicesData !== undefined){
             console.log("Room data updated")
             this.updateRoomData();
-        }else{
-            console.log("NOPE")
         }
 
     }
