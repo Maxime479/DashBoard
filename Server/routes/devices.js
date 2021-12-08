@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Device = require("../models/device");
+const User = require("../models/user");
 
 router.get('/', async (req, res) =>{
   try{
@@ -30,6 +31,38 @@ router.post('/', async (req,res) =>{
     res.json(PushData);
   }catch (err){
     res.json({message: err});
+  }
+});
+
+router.get('/:deviceID', async (req, res) => {
+
+  try {
+    const device = await Device.findById(req.params.deviceID);
+
+    res.json(device);
+  }catch (err) {
+    res.json({message:err});
+  }
+});
+
+router.delete('/:deviceID', async (req, res) => {
+  try {
+    const removeDevice = await Device.remove({_id: req.params.deviceID});
+    res.json(removeDevice);
+  }catch (err) {
+    res.json({message:err});
+  }
+});
+
+router.patch('/:deviceID', async (req, res) => {
+  try {
+    const updatedDevice = await Device.updateOne(
+        {_id: req.params.deviceID},
+        {$set: {state: req.body.state}}
+    );
+    res.json(updatedDevice);
+  }catch (err) {
+    res.json({message:err});
   }
 });
 
