@@ -22,9 +22,9 @@
 
 .downGraph{
 
-    background-color: grey;
-    width: 5em;
-    height: 5em;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
 
 }
 
