@@ -52,7 +52,7 @@ router.delete('/:userID', async (req, res) => {
     }
 });
 
-router.patch('/:userID', async (req, res) => {
+router.put('/:userID', async (req, res) => {
     try {
         const updatedUser = await User.updateOne(
             {_id: req.params.userID},

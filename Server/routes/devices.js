@@ -54,7 +54,7 @@ router.delete('/:deviceID', async (req, res) => {
   }
 });
 
-router.patch('/:deviceID', async (req, res) => {
+router.put('/:deviceID', async (req, res) => {
   try {
     const updatedDevice = await Device.updateOne(
         {_id: req.params.deviceID},
