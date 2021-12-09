@@ -3,6 +3,7 @@ import Image from "../tools/Image";
 import Text from "../tools/Text"
 
 import '../../css/addons/Member.css';
+import axios from "axios";
 
 
 export default class Member extends React.Component{
@@ -22,6 +23,12 @@ export default class Member extends React.Component{
 
 
     convertDate = (timestamp) => {
+
+        //Error gestion if data doesn't exist
+        if(timestamp === undefined){
+            this.setState({memberData: "Unfound"});
+            return;
+        }
 
         let day, month, year;
 
@@ -43,14 +50,9 @@ export default class Member extends React.Component{
 
 
 
-
-
     componentDidMount() {
         this.setState({memberData: this.props.caller})
     }
-
-
-
 
     componentDidUpdate(prevState) {
         if(this.state.memberData !== undefined && !this.state.converted){
