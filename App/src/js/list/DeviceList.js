@@ -31,7 +31,7 @@ export default class DeviceList extends React.Component{
                 </div>
             )
         }else{
-            console.log("LOADED");
+            // console.log("LOADED");
 
             let i= 0;
 
@@ -47,7 +47,8 @@ export default class DeviceList extends React.Component{
 */
                 deviceList.push(
                     <Device
-                        caller={extractData[deviceIndex]}
+                        caller={this.props.caller[deviceIndex]}
+                        // caller={extractData[deviceIndex]}
                     />
                 )
 

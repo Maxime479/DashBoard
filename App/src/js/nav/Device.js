@@ -6,10 +6,7 @@ import '../../css/addons/Device.css';
 
 import OffButton from "../../img/button/OffButton.png"
 import OnButton from "../../img/button/OnButton.png"
-
-import ObjectID from "bson-objectid";
 import axios from "axios";
-
 
 
 export default class Device extends React.Component{
@@ -24,18 +21,28 @@ export default class Device extends React.Component{
         };
 
         this.handleChange = this.handleChange.bind(this);
-
-
     }
 
     loadSwitchState = () => {
 
-        if(this.state.deviceData.state){
+        if(this.state.deviceData.state === true){
             this.setState({switchButton: OnButton});
             this.setState({onState: true});
         }else{
             this.setState({switchButton: OffButton});
             this.setState({onState: false});
+        }
+
+        this.setState({reload: true})
+
+    }
+
+    whatButton = (state) => {
+
+        if(state === true){
+            return OnButton;
+        }else{
+            return OffButton;
         }
 
     }
@@ -58,40 +65,56 @@ export default class Device extends React.Component{
 
     }
 
-
-    componentDidUpdate(prevState){
-        if(this.state.onState !== this.state.deviceData.state){
-
-            this.loadSwitchState();
-        }
-
+    showValue = (value) => {
+        // console.log("------------------------------------------")
+        console.log(" ")
+        console.log(" ")
+        console.log("__________________________________________")
+        console.log(value)
+        console.log("__________________________________________")
+        console.log(" ")
+        console.log(" ")
+        // console.log("------------------------------------------")
     }
+
+    componentDidMount() {
+        this.setState({deviceData: this.props.caller})
+        this.setState({switchButton: this.whatButton(this.props.caller.state)})
+        this.setState({onState: this.props.caller.state})
+    }
+
+
 
 
     sendStateInDB = () => {
-        let state = !this.state.onState;
-        let id = this.state._id;
 
-        // axios.post('changeDeviceState',
-        //     {
-        //     params: {
-        //         id: id,
-        //         state: state,
-        //     },
-        //     // headers: {
-        //     //     'x-rapidapi-host': 'world-clock.p.rapidapi.com',
-        //     //     'x-rapidapi-key': 'a4740618f3msh3798e57b20efe3fp1f12c6jsn62bc537683e9'
-        //     // }
-        // })
-        //     // .then(response => {
-        //     //     this.setState({ day: response.data.dayOfTheWeek});
-        //     //     this.setState({ date: response.data.currentDateTime});
-        //     // })
-        //     .then(() => console.log("New device state send"))
+        // const state = !this.state.onState;
+        const state = !this.props.caller.state;
+        const id = this.state.deviceData._id;
+
+        const link = '/devices/' + id
+
+        axios({
+            method: 'patch',
+            url: link,
+            headers: {},
+            data: {
+                state: state
+            }
+
+        })
     }
 
     handleChange() {
-        this.sendStateInDB();
+
+        try{
+            this.sendStateInDB();
+        }finally {
+            this.setState({deviceData: this.props.caller})
+            this.setState({onState: this.props.caller.state})
+            this.setState({switchButton: this.whatButton(this.props.caller.state)})
+        }
+
     }
 
 
@@ -99,13 +122,13 @@ export default class Device extends React.Component{
 
         let newDevice = this.props.caller;
 
-        if(!this.state.innit){
-            console.log("INNIT");
-            console.log(newDevice);
-            console.log("INNIT");
-            this.setState({deviceData: newDevice})
-            this.setState({innit: true})
-        }
+        // if(!this.state.innit){
+        //     // console.log("INNIT");
+        //     // console.log(newDevice);
+        //     // console.log("INNIT");
+        //     this.setState({deviceData: newDevice})
+        //     this.setState({innit: true})
+        // }
 
 
         if(newDevice.type.includes('light') || newDevice.type.includes('power_strip') || newDevice.type.includes('media')){
@@ -122,10 +145,10 @@ export default class Device extends React.Component{
                         />
 
                         <Image
-                            src={this.state.switchButton}
+                            // src={this.state.switchButton}
+                            src={this.whatButton(this.props.caller.state)}
                             className="onOffButton"
                             alt="boutton on/off"
-                            // onClick={this.sendStateInDB()}
                             onClick={this.handleChange}
 
                         />

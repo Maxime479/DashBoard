@@ -18,7 +18,7 @@ export default class LittleDevice extends React.Component{
                     <Image
                         src={this.props.icon}
                         alt="icône d'appareils"
-                        className="littleIcon"
+                        className={"littleIcon " + this.props.child}
                     />
                 </div>
 
