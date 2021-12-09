@@ -38,9 +38,9 @@ export default class MyDevices extends React.Component{
     componentDidMount() {
 
         if(this.state.dataLoaded === false){
-            console.log("DONE")
+            // console.log("DONE")
             this.getDevicesData()
-            console.log(this.state)
+            // console.log(this.state)
         }else{
             this.setState({devicesData: this.props.data})
         }
@@ -63,7 +63,7 @@ export default class MyDevices extends React.Component{
 
     makeList = () => {
 
-        console.log("done")
+        // console.log("done")
 
         let data = this.state.devicesData;
         let nbDevices = data.length;
@@ -85,7 +85,8 @@ export default class MyDevices extends React.Component{
 
 
             let color;
-            console.log(color)
+            let child = " "
+            // console.log(color)
 
 
             switch (data[i].type){
@@ -100,6 +101,7 @@ export default class MyDevices extends React.Component{
                     break;
                 case "sensor":
                     color = sensorColor
+                    child = " sensorImage"
                     break;
                 default:
                     color = lightColor
@@ -112,6 +114,7 @@ export default class MyDevices extends React.Component{
                     name={data[i].name}
                     icon={data[i].icon}
                     color={color}
+                    child={child}
                 />
             )
         }
@@ -132,7 +135,7 @@ export default class MyDevices extends React.Component{
                 </div>
             )
         }else {
-            console.log("LOADED");
+            // console.log("LOADED");
 
             return(
                 <div className={"myDevices " + this.props.className}>

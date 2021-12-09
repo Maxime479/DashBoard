@@ -62,7 +62,7 @@ router.patch('/:deviceID', async (req, res) => {
     );
     res.json(updatedDevice);
   }catch (err) {
-    res.json({message:err});
+    res.status(400).json({message:err});
   }
 });
 

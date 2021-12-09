@@ -460,29 +460,17 @@ export default class Home extends React.Component{
         }
 
 
-
-
         if(this.arrayInclude(newDatas, this.formatDate(lastUpdateDate))) {
 
             let concatArray = oldDataArray.concat(newDatas)
             return concatArray;
 
-
             // console.log("OUT")
-            //
             // console.log("______________________________________________________________________________________________________________________________")
             // this.showValue(concatArray)
             // console.log("______________________________________________________________________________________________________________________________")
-            //
-            //
             // console.log("OUT")
         }
-
-
-
-
-
-
     }
 
     sendData = (id, newData) => {

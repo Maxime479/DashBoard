@@ -55,28 +55,20 @@ export default class Devices extends React.Component{
 
         axios.get('/devices')
             .then(response => {
-                console.log(response)
-                console.log(response.data)
+                // console.log(response)
+                // console.log(response.data)
                 this.setState({devicesData: response.data})
             })
     }
 
     componentDidMount() {
-
         this.getDevicesData()
-
-        console.log("STATE")
-        console.log(this.state)
-        console.log("STATE")
-
-
     }
 
     componentDidUpdate(prevState) {
         if(prevState.devicesData !== this.state.devicesData){
             this.getDevicesData()
-            console.log("UPDATE")
-
+            // console.log("UPDATE")
         }
     }
 
@@ -114,12 +106,6 @@ export default class Devices extends React.Component{
                             caller={this.state.devicesData}
                         />
 
-                        {/*<button onClick={() => {console.log(this.state.devicesData)}}>*/}
-                        {/*    CONSOLE*/}
-                        {/*</button>*/}
-
-
-
 
 
                     </main>
@@ -128,8 +114,6 @@ export default class Devices extends React.Component{
                     <aside className="profilContainer">
                         <Profil
                             username="Maxime"
-                            // loaded={this.state.loaded}
-                            // data={this.state.devicesData}
                         />
                     </aside>
 

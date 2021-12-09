@@ -22,8 +22,6 @@ export default class Profil extends React.Component{
                 />
 
                 <MyDevices
-                    // loaded={this.props.loaded}
-                    // data={this.props.data}
                 />
 
             </div>
