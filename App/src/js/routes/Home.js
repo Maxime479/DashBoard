@@ -85,7 +85,7 @@ export default class Home extends React.Component{
 
         for(let i=0; i<devicesData.length; i++){
 
-            if(devicesData[i].room.includes(room) && devicesData[i].unit.includes("kWh")){
+            if(devicesData[i].room.includes(room) && devicesData[i].unit.includes("kWh") || devicesData[i].unit.includes("Wh")){
                 cons += devicesData[i].data;
             }
 
@@ -107,11 +107,14 @@ export default class Home extends React.Component{
                     break;
                 default:
                     console.log("Room unfound for consumption calcul")
-                    break;
+                    return;
             }
         }
 
-        this.setState({consumption: consumption})
+        if(consumption !== undefined){
+            this.setState({consumption: consumption})
+        }
+
     }
 
     totalSensorData = () => {
@@ -507,16 +510,6 @@ export default class Home extends React.Component{
         }
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
