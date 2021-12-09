@@ -10,7 +10,6 @@ import Big from "../cards/Big";
 import SearchBar from "../SearchBar";
 import Date from "../widgets/Date";
 import Weather from "../widgets/Weather";
-import ObjectID from "bson-objectid";
 import Image from "../tools/Image";
 import axios from "axios";
 
@@ -58,40 +57,6 @@ export default class Home extends React.Component{
                 lum: 0,
             },
 
-            devicesData : [
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Lampe',
-                    room: 'Salon',
-                    state: false,
-                    type: 'light',
-                    icon: 'https://www.icone-png.com/png/15/14621.png',
-                    data: 47,
-                    unit: 'kWh',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Multiprise',
-                    room: 'Chambre',
-                    state: true,
-                    type: 'power_strip',
-                    icon: 'https://icon-library.com/images/382_electrical-electric-power-socket-512.png',
-                    data: 25,
-                    unit: 'kWh',
-                },
-                {
-                    _id: ObjectID("61acc6f8b230570391d7ca62"),
-                    name: 'Capteur d\'humidité',
-                    room: 'Salon',
-                    state: true,
-                    type: 'sensor',
-                    icon: 'https://i.ibb.co/d04mT2Z/logoHum.png',
-                    data: 32,
-                    unit: '%',
-                },
-
-            ],
-
 
         };
 
@@ -112,6 +77,7 @@ export default class Home extends React.Component{
 
     }
 
+    //---------------- Conumption Calculator ----------------
     totalConsumption = (room) => {
         let devicesData = this.state.devicesData;
         let consumption = this.state.consumption;
@@ -213,19 +179,6 @@ export default class Home extends React.Component{
         this.totalSensorData()
     }
 
-
-
-
-    // componentDidUpdate(prevState){
-    //
-    //     if(prevState.devicesData !== this.state.devicesData){
-    //         this.consUpdate()
-    //         console.log("Consumption Updated")
-    //     }
-    //
-    // }
-
-
     getDevicesData = () => {
 
         axios.get('/devices')
@@ -235,25 +188,346 @@ export default class Home extends React.Component{
     }
 
     componentDidMount() {
-
         this.getDevicesData()
-
     }
 
     componentDidUpdate(prevState) {
         if(prevState.devicesData !== this.state.devicesData){
             this.getDevicesData()
-            console.log("UPDATE")
+            console.log("Update Data")
         }
 
         if(this.state.consumption.lounge === 0 && this.state.devicesData !== undefined){
             this.dataUpdate()
             console.log("Consumption Innitialized")
         }else{
-            console.log("NOPE")
+            console.log("Can't Innitialize data")
+        }
+
+        // if(this.state.devicesData !== undefined){
+        //     this.updateAllDevicesDatas(this.state.devicesData)
+        // }
+
+    }
+
+
+
+
+
+
+    //---------------- Value Generator ----------------
+    //Show clearly value in console
+    showValue = (value) => {
+        // console.log("------------------------------------------")
+        console.log(" ")
+        console.log(" ")
+        console.log("__________________________________________")
+        console.log(value)
+        console.log("__________________________________________")
+        console.log(" ")
+        console.log(" ")
+        // console.log("------------------------------------------")
+    }
+
+
+    //Date
+    getCurrentDate = () => {
+        let nowInMs = Date.now()
+        let nowDate = new Date(nowInMs)
+
+        nowInMs = nowInMs - nowDate.getSeconds()*1000 - nowDate.getMinutes()*60000
+        nowDate = new Date(nowInMs)
+
+        return nowDate;
+    }
+
+    addHours = (date, hours) => {
+        return new Date(new Date(date).setHours(date.getHours() + hours));
+    }
+
+    formatDate = (date) => {
+
+        let result = "Unknown"
+
+        if(date === undefined){
+            result = "No data"
+        }
+
+
+        if(typeof date === "object"){
+            result = date.toISOString().slice(0, 10) + " " + date.toLocaleTimeString(('fr-FR'))
+        }
+
+        return result
+    }
+
+    arrayInclude = (array, string) => {
+        let condition = false
+
+        let stringArray = JSON.stringify(array)
+        condition = stringArray.includes(string)
+
+        return condition
+    }
+
+
+    //Data
+    getRandNb = (min, max) => {
+        max++;
+        const range = max - min;
+        return Math.floor(Math.random() * (range) ) + min;
+    }
+
+    boundedData = (data, type) => {
+
+        let prebound = data;
+        let afterbound = 0;
+
+
+
+        const maxTemp = 27;
+        const minTemp = 18;
+
+        const maxHum = 75;
+        const minHum = 37;
+
+        const maxLum = 2000;
+        const minLum = 0;
+
+        let max, min;
+
+        switch (type){
+            case "temp":
+                max = maxTemp;
+                min = minTemp;
+                break;
+            case "hum":
+                max = maxHum;
+                min = minHum;
+                break;
+            case "lum":
+                max = maxLum;
+                min = minLum;
+                break;
+            default:
+                console.log("Unknown data type: can't bound")
+                return;
+        }
+
+        if(data <= min){
+            data = min;
+        }
+        if(data >= max){
+            data = max;
+        }
+
+        afterbound = data;
+        // let cons = {prebound, afterbound}
+        // console.log("__________________________________")
+        // console.log(cons)
+        // console.log("__________________________________")
+
+        return data;
+    }
+
+    linearNewData = (oldData, type) => {
+
+        let randEvolution = 1;
+        let newData = 0;
+        let range = 0;
+
+        let rangeTemp = 1;
+        let rangeHum = 3;
+        let rangeLum = 200;
+
+        randEvolution = this.getRandNb(0, 5);
+        let evolution;
+
+        switch (type){
+            case "temp":
+                range = rangeTemp;
+                break;
+            case "hum":
+                range = rangeHum;
+                break;
+            case "lum":
+                range = rangeLum;
+                break;
+            case "elec":
+                newData = this.getRandNb(0, 20);
+                return newData;
+            default:
+                console.log("Unknown data type: can't bound")
+                return;
+        }
+
+        evolution = this.getRandNb(0, range);
+
+        //Choose sens of evolution
+        if(randEvolution === (0 || 1)){
+            newData = oldData - evolution;
+        }
+        if(randEvolution === (2 || 3)){
+            return oldData;
+        }
+        if(randEvolution === (4 || 5)){
+            newData = oldData + evolution;
+        }
+
+        // let cons = {evolution, data: newData}
+        // console.log("__________________________________")
+        // console.log(cons)
+        // console.log("__________________________________")
+
+        return this.boundedData(newData, type);
+    }
+
+
+    forceIntType = (data) => {
+        if(typeof data === "number"){
+            return data;
+        }
+
+        if(typeof data === "string"){
+            return parseInt(data);
         }
 
     }
+
+    generateMissingData = (device) => {
+
+        // Date.prototype.addHours = function(h) {
+        //     this.setTime(this.getTime() + (h*60*60*1000));
+        //     return this;
+        // }
+        //
+
+        const id = device.id
+        const unit = device.unit
+        let oldDataArray = device.stored_data
+        let arrayLength = oldDataArray.length-1
+
+        const lastUpdateData = this.forceIntType(oldDataArray[arrayLength].data)
+        const lastUpdateDate = new Date(oldDataArray[arrayLength].time)
+
+        let currentDate = this.getCurrentDate()
+        let tempDate = lastUpdateDate
+        let formattedDate
+        let newDatas = []
+
+        let tempData = lastUpdateData
+        let type = ""
+
+        //Min = 18°C | Max = 27°C
+        let randTemp = Math.floor(Math.random() * 40) + 5;
+
+        //Min = 0lm | Max = 2000lm
+        let randLum = Math.floor(Math.random() * 2000);
+
+        //Min = 37% | Max = 75%
+        let randHum = Math.floor(Math.random() * 38) + 37;
+
+
+        switch (unit){
+            case "°C":
+                type = "temp";
+                break;
+            case "%":
+                type = "hum";
+                break;
+            case "lm":
+                type = "lum";
+                break;
+            case "Wh":
+                type = "elec";
+                break;
+            case "kWh":
+                type = "elec";
+                break;
+            default:
+                console.log("Unknown data type: can't bound")
+                return;
+        }
+
+
+        while(tempDate.getTime() !== currentDate.getTime()){
+            tempDate = this.addHours(tempDate, 1)
+            formattedDate = this.formatDate(tempDate)
+
+            tempData = this.linearNewData(tempData, type)
+
+            newDatas.push({time: formattedDate, data: tempData})
+        }
+
+
+
+
+        if(this.arrayInclude(newDatas, this.formatDate(lastUpdateDate))) {
+
+            let concatArray = oldDataArray.concat(newDatas)
+            return concatArray;
+
+
+            // console.log("OUT")
+            //
+            // console.log("______________________________________________________________________________________________________________________________")
+            // this.showValue(concatArray)
+            // console.log("______________________________________________________________________________________________________________________________")
+            //
+            //
+            // console.log("OUT")
+        }
+
+
+
+
+
+
+    }
+
+    sendData = (id, newData) => {
+
+        let link = '/devices/' + id
+
+        axios.patch(link, {
+            body: {
+                stored_data: newData
+            }
+        })
+            .then(response => {
+                console.log("Update Response")
+                console.log(response)
+                console.log("Update Response")
+            }).end(this.getDevicesData())
+
+
+    }
+
+    updateAllDevicesDatas = (devicesData) => {
+        let nbDevices = devicesData.length
+
+        try{
+            for (let i=0; i<nbDevices; i++){
+                let newStoredData = this.generateMissingData(devicesData[i])
+                this.sendData(devicesData[i]._id, newStoredData)
+            }
+        }catch (error){
+            console.log("Error while updating datas")
+            console.log(error)
+        }finally{
+            console.log("All datas updated")
+        }
+
+    }
+
+
+
+
+
+
+
+
+
 
 
 
