@@ -2,7 +2,6 @@ import React from "react";
 import Navigation from "../Navigation";
 import Profil from "../cards/Profil";
 import MemberList from "../list/MemberList";
-import ObjectID from "bson-objectid";
 import Image from "../tools/Image";
 import axios from "axios";
 
@@ -41,14 +40,10 @@ export default class Members extends React.Component{
             .then(response => {
                 this.setState({membersData: response.data})
             })
-
-
     }
 
     componentDidMount() {
-
         this.getUserData()
-
     }
 
 

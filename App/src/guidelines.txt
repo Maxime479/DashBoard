@@ -6,7 +6,7 @@ Requete API
 4. Requête Data Stat
 5. Changer Mot de passe
 6. Membres
-7. Pièces
+7. PiècesXXX
 8. Appareils
 
 9. HomeAssistant ou Tuya

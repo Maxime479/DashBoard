@@ -23,20 +23,6 @@ export default class Date extends React.Component{
 
     }
 
-    exeampleRequestAxios = () => {
-
-        const data = undefined;
-
-        axios.post('url', {"body":data}, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        )
-
-    }
-
-
     translateDay = (day) => {
 
         let frenchDay = "";
@@ -122,7 +108,6 @@ export default class Date extends React.Component{
 
     }
 
-
     convertDate = (date) => {
 
         // date in timestamp format : "2021-12-04T20:44Z";
@@ -147,6 +132,7 @@ export default class Date extends React.Component{
 
     componentDidMount() {
 
+        //Get date from API
         axios.get('https://world-clock.p.rapidapi.com/json/utc/now', {
             headers: {
                 'x-rapidapi-host': 'world-clock.p.rapidapi.com',
