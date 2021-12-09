@@ -102,6 +102,8 @@ export default class Devices extends React.Component{
                 <aside className="navContainer" style={this.state.navStyle}>
                     <Navigation
                         selected="devices"
+                        // selected="admin"
+                        // penser à rajouter l'option dans le widget
                     />
                 </aside>
 
