@@ -85,18 +85,6 @@ export default class Devices extends React.Component{
 
 
     render() {
-
-        if(this.state.devicesData === undefined){
-            console.log("EMPTY");
-
-            return (
-                <div>
-                    Data Loading...
-                </div>
-            )
-        }else {
-            console.log("LOADED");
-
             return(
                 <div className="App">
 
@@ -153,13 +141,6 @@ export default class Devices extends React.Component{
 
                 </div>
 
-
             )
-
-
-        }
-
-
-
     }
 }
