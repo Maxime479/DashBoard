@@ -211,9 +211,11 @@ export default class Device extends React.Component{
                 </div>
             )
 
+        }else{
+            // this.showValue(this.props.caller)
+            console.log("Type Unknown")
+            return null;
         }
-
-
     }
 }
 
