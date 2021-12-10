@@ -159,7 +159,7 @@ export default class Statistics extends React.Component{
                                         <Long
                                             className={convertClass(item.unit)}
                                             title={item.name}
-                                            data={item.data}
+                                            data={item.data + item.unit}
                                         />
 
 
