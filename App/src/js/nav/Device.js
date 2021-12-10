@@ -84,8 +84,6 @@ export default class Device extends React.Component{
     }
 
 
-
-
     sendStateInDB = () => {
 
         // const state = !this.state.onState;
@@ -94,15 +92,22 @@ export default class Device extends React.Component{
 
         const link = '/devices/' + id
 
-        axios({
-            method: 'patch',
-            url: link,
-            headers: {},
-            data: {
-                state: state
-            }
+        // axios({
+        //     method: 'put',
+        //     url: link,
+        //     headers: {},
+        //     data: {
+        //         state: state
+        //     }
+        //
+        // })
 
+        axios.put(link, {
+                state: state,
         })
+            .then(response => {
+                this.setState({devicesData: response.data})
+            })
     }
 
     handleChange() {
