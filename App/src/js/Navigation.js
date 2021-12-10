@@ -20,6 +20,7 @@ export default class Navigation extends React.Component{
                     devices: 'none',
                     statistics: 'none',
                     members: 'none',
+                    admin: 'none',
                     done: false,
                 }
 
@@ -50,6 +51,9 @@ export default class Navigation extends React.Component{
             case "members":
                 temp.members = "select";
                 break;
+            case "admin":
+                temp.admin = "select";
+                break;
             default:
                 console.log("Menu selection error")
                 break;
@@ -78,6 +82,7 @@ export default class Navigation extends React.Component{
                             <li><Link to="/devices" className={this.state.class.devices} > Appareils </Link></li>
                             <li><Link to="/statistics" className={this.state.class.statistics} > Statistiques </Link></li>
                             <li><Link to="/members" className={this.state.class.members} > Membres </Link></li>
+                            <li><Link to="/admin" className={this.state.class.admin} > Admin </Link></li>
 
                         </ul>
 

@@ -22,6 +22,8 @@ export default class Home extends React.Component{
 
         this.state = {
 
+            pageLoads: 0,
+
             navStyles: {
                 none: {display: 'none'},
                 block: {display: 'flex'},
@@ -82,13 +84,17 @@ export default class Home extends React.Component{
         let devicesData = this.state.devicesData;
         let consumption = this.state.consumption;
         let cons = 0;
+        let tempData = 0;
 
         for(let i=0; i<devicesData.length; i++){
 
-            if(devicesData[i].room.includes(room) && devicesData[i].unit.includes("kWh") || devicesData[i].unit.includes("Wh")){
-                cons += devicesData[i].data;
+            if(devicesData[i].room.includes(room) && (devicesData[i].unit.includes("kWh") || devicesData[i].unit.includes("Wh"))){
+                tempData = devicesData[i].data;
+                if(typeof tempData === 'number'){
+                    console.log({devicesData})
+                    cons += tempData;
+                }
             }
-
         }
 
         if(cons !== 0){
@@ -96,13 +102,25 @@ export default class Home extends React.Component{
                 case "Salon":
                     consumption.lounge = cons;
                     break;
+                case "salon":
+                    consumption.lounge = cons;
+                    break;
                 case "Chambre":
+                    consumption.bedroom = cons;
+                    break;
+                case "chambre":
                     consumption.bedroom = cons;
                     break;
                 case "Cuisine":
                     consumption.kitchen = cons;
                     break;
+                case "cuisine":
+                    consumption.kitchen = cons;
+                    break;
                 case "Salle de bain":
+                    consumption.bathroom = cons;
+                    break;
+                case "salle de bain":
                     consumption.bathroom = cons;
                     break;
                 default:
@@ -112,6 +130,10 @@ export default class Home extends React.Component{
         }
 
         if(consumption !== undefined){
+            console.log("DATAAAA")
+            console.log(consumption)
+            console.log(this.state.devicesData)
+            console.log("DATAAAA")
             this.setState({consumption: consumption})
         }
 
@@ -183,7 +205,6 @@ export default class Home extends React.Component{
     }
 
     getDevicesData = () => {
-
         axios.get('/devices')
             .then(response => {
                 this.setState({devicesData: response.data})
@@ -200,17 +221,22 @@ export default class Home extends React.Component{
             console.log("Update Data")
         }
 
-        if(this.state.consumption.lounge === 0 && this.state.devicesData !== undefined){
+        let cons = this.state.consumption
+
+        let data = this.state.devicesData
+
+        if(((cons.lounge && cons.bedroom && cons.bathroom && cons.kitchen) === 0) && (this.state.devicesData !== undefined) && (this.state.pageLoads <= 50)){
             this.dataUpdate()
-            console.log("Consumption Innitialized")
-        }else{
+            // console.log("Consumption Innitialized")
+            // console.log(" ")
+            // console.log({deviceData: data})
+            // console.log(" ")
+            // console.log("Consumption Innitialized")
+
+            this.setState({pageLoads: (this.state.pageLoads + 1)})
+        }else if(this.state.pageLoads <= 51){
             console.log("Can't Innitialize data")
         }
-
-        // if(this.state.devicesData !== undefined){
-        //     this.updateAllDevicesDatas(this.state.devicesData)
-        // }
-
     }
 
 
@@ -536,6 +562,7 @@ export default class Home extends React.Component{
                             selected="home"
                         />
                     </aside>
+
 
 
                     <main className="homeMain">

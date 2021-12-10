@@ -1,16 +1,17 @@
 import React from "react";
 import Navigation from "../Navigation";
 import Profil from "../cards/Profil";
-import DeviceList from "../list/DeviceList";
 
 import axios from "axios";
 
 import '../../css/Admin.css';
+import Image from "../tools/Image";
+import AdminTab from "../nav/AdminTab";
 
 
 
 
-export default class Devices extends React.Component{
+export default class Admin extends React.Component{
 
     constructor(props) {
         super(props);
@@ -49,35 +50,6 @@ export default class Devices extends React.Component{
 
     }
 
-    getDevicesData = () => {
-
-        axios.get('/devices')
-            .then(response => {
-                console.log(response)
-                console.log(response.data)
-                this.setState({devicesData: response.data})
-            })
-    }
-
-    componentDidMount() {
-
-        this.getDevicesData()
-
-        console.log("STATE")
-        console.log(this.state)
-        console.log("STATE")
-
-
-    }
-
-    componentDidUpdate(prevState) {
-        if(prevState.devicesData !== this.state.devicesData){
-            this.getDevicesData()
-            console.log("UPDATE")
-
-        }
-    }
-
 
 
 
@@ -101,7 +73,7 @@ export default class Devices extends React.Component{
 
                 <aside className="navContainer" style={this.state.navStyle}>
                     <Navigation
-                        selected="devices"
+                        selected="admin"
                         // selected="admin"
                         // penser à rajouter l'option dans le widget
                     />
@@ -110,9 +82,9 @@ export default class Devices extends React.Component{
 
                 <main>
 
-                    {/*<AdminTab*/}
-                    {/*    caller={this.state.devicesData}*/}
-                    {/*/>*/}
+                    <AdminTab
+                        caller={this.state.devicesData}
+                    />
 
 
 

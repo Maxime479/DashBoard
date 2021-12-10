@@ -6,9 +6,13 @@ const User = require("../models/user");
 router.get('/', async (req, res) => {
     try {
         const device = await Device.find();
+
         res.json(device);
-    } catch (e) {
-        res.json({message: e});
+    } catch (error) {
+        res.status(400).json({
+            message:"/!\\ ERROR, can't get the devices informations/!\\" ,
+            error
+        });
     }
 });
 
@@ -26,11 +30,17 @@ router.post('/', async (req, res) => {
 
     try {
         const savedDevices = await device.save();
-        const PushData = await device.stored_data.push(donne);
-        res.json(savedDevices);
-        res.json(PushData);
-    } catch (err) {
-        res.json({message: err});
+        const PushData = await device.stored_data.push();
+
+        res.status(200).json({
+            message: "Device added to BDD",
+            savedDevices, PushData
+        });
+    } catch (error) {
+        res.status(400).json({
+            message:"/!\\ ERROR /!\\" ,
+            error
+        });
     }
 });
 
@@ -39,18 +49,24 @@ router.get('/:deviceID', async (req, res) => {
     try {
         const device = await Device.findById(req.params.deviceID);
 
-        res.json(device);
-    } catch (err) {
-        res.json({message: err});
+        res.status(200).json({device});
+    } catch (error) {
+        res.status(400).json({
+            message:"/!\\ ERROR /!\\" ,
+            error
+        });
     }
 });
 
 router.delete('/:deviceID', async (req, res) => {
     try {
         const removeDevice = await Device.remove({_id: req.params.deviceID});
-        res.json(removeDevice);
-    } catch (err) {
-        res.json({message: err});
+        res.status(200).json(removeDevice);
+    } catch (error) {
+        res.status(400).json({
+            message:"/!\\ ERROR /!\\" ,
+            error
+        });
     }
 });
 
@@ -71,66 +87,14 @@ router.put('/:deviceID', async (req, res) => {
                 }
             }
         );
-        res.json(updatedDevice);
-    } catch (err) {
-        res.json({message: err});
+        res.status(200).json(updatedDevice);
+    } catch (error) {
+        res.status(400).json({
+            message:"/!\\ ERROR /!\\" ,
+            error
+        });
     }
 });
-
-// router.put('/state', async (req,res) =>{
-//
-//
-//   const id = req.body.id;
-//   const state = req.body.state;
-//
-//   console.log("Data get");
-//   console.log(id);
-//   console.log(state);
-//   console.log("Data get");
-//
-//
-//   // try{
-//
-//     const device = await Device.find({_id: id});
-//
-//     console.log("Found");
-//     console.log(device);
-//     console.log("Found");
-//
-//
-//     device.state = state;
-//     console.log("mark1");
-//
-//     console.log("Modified");
-//     console.log(device);
-//     console.log("Modified");
-//
-//
-//
-//     Device.updateOne({_id: req.params.id}, device).then(
-//         () => {
-//           res.status(201).json({
-//             message: 'Device updated successfully!'
-//           });
-//         }
-//     ).catch(
-//         (error) => {
-//           res.status(400).json({
-//             error: error
-//           });
-//         }
-//     );
-//
-//
-//
-//   //   res.status(200).json({
-//   //     message: "state updated successfully",
-//   //   });
-//   // }catch (err){
-//   //   res.status(400).json({message: err});
-//   //   console.log("Change State Error")
-//   // }
-// });
 
 module.exports = router;
 

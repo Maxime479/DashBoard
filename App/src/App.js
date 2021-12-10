@@ -10,6 +10,7 @@ import Rooms from './js/routes/Rooms';
 import Devices from './js/routes/Devices';
 import Statistics from './js/routes/Statistics';
 import Members from './js/routes/Members';
+import Admin from './js/routes/Admin';
 import NotFound from './js/routes/NotFound';
 
 
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/devices" component={Devices}/>
             <Route exact path="/statistics" component={Statistics}/>
             <Route exact path="/members" component={Members}/>
+            <Route exact path="/admin" component={Admin}/>
             <Route exact path="/not-found" component={NotFound}/>
             <Redirect to="not-found"/>
         </Switch>
