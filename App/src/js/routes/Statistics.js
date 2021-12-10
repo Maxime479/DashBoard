@@ -8,7 +8,30 @@ import Image from "../tools/Image";
 import axios from "axios";
 
 
-
+function convertClass(unit) {
+    let type = "";
+    switch (unit){
+        case "°C":
+            type = "temp";
+            break;
+        case "%":
+            type = "hum";
+            break;
+        case "lm":
+            type = "lum";
+            break;
+        case "Wh":
+            type = "elec";
+            break;
+        case "kWh":
+            type = "elec";
+            break;
+        default:
+            console.log("Unknown data type: can't bound")
+            return;
+    }
+    return type;
+}
 
 export default class Statistics extends React.Component{
 
@@ -48,7 +71,6 @@ export default class Statistics extends React.Component{
         }
 
     }
-
 
 
 
@@ -135,7 +157,7 @@ export default class Statistics extends React.Component{
 
                                     <div key ={key} className="longSensorCharts">
                                         <Long
-                                            // className="temp"
+                                            className={convertClass(item.unit)}
                                             title={item.name}
                                             data={item.data}
                                         />
@@ -151,28 +173,6 @@ export default class Statistics extends React.Component{
 
 
 
-                        {/*<div className="upStats">*/}
-
-                        {/*    <Long*/}
-                        {/*        className="temp"*/}
-                        {/*        title="Température"*/}
-                        {/*        data="+25°C"*/}
-                        {/*    />*/}
-
-                        {/*    <Long*/}
-                        {/*        className="hum"*/}
-                        {/*        title="Humidité"*/}
-                        {/*        data="30%"*/}
-                        {/*    />*/}
-
-                        {/*    <Long*/}
-                        {/*        className="lum"*/}
-                        {/*        title="Luminosité"*/}
-                        {/*        data="150lm"*/}
-                        {/*    />*/}
-
-
-                        {/*</div>*/}
 
                         <div className="downGraph">
 
