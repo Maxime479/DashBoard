@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     try {
         const device = await Device.find();
 
-        res.json(device);
+        res.status(200).json(device);
     } catch (error) {
         res.status(400).json({
             message:"/!\\ ERROR, can't get the devices informations/!\\" ,

@@ -15,7 +15,7 @@ export default class AdminTab extends React.Component{
 
         this.state = {
 
-            // devicesData: [],
+            devicesData: [],
             membersData: [],
 
 
@@ -39,11 +39,24 @@ export default class AdminTab extends React.Component{
 
 
     getDevicesData = () => {
+
+        let tempDevices = {}
+        let tempArray = []
+
         axios.get('/devices')
             .then(response => {
                 console.log("R2PONSE")
                 console.log(response)
                 console.log(response.data)
+
+                // tempDevices = response.data
+                // delete tempDevices.stored_data
+                //
+                // for(let i=0; i<tempDevices.length; i++){
+                //     tempArray.push(Object.keys(tempDevices[i]))
+                // }
+                //
+                // this.setState({devicesData: tempArray})
                 this.setState({devicesData: response.data})
             })
     }
@@ -64,9 +77,9 @@ export default class AdminTab extends React.Component{
     }
 
     componentDidUpdate(prevState) {
-        if(prevState.devicesData !== this.state.devicesData){
-            this.getDevicesData()
-        }
+        // if(prevState.devicesData !== this.state.devicesData){
+        //     this.getDevicesData()
+        // }
     }
 
     // sendDataInDB = () => {
@@ -139,29 +152,10 @@ export default class AdminTab extends React.Component{
 
 
 
-            const userColumnHead = <thead className="adminTabRow top">
-                                        <tr>
-                                            <td>ID</td>
-                                            <td>privileges</td>
-                                            <td>first_name</td>
-                                            <td>last_name</td>
-                                            {/*<td>{new Date(item.birthDate)}</td>*/}
-                                            <td>login</td>
-                                            <td>password</td>
-                                            {/*<td>{item.photo}</td>*/}
-                                            <td>devices</td>
-                                            <td>rooms</td>
-                                        </tr>
-                                    </thead>
 
             let membersData = this.state.membersData
             let devicesData = this.state.devicesData
 
-            // const resultArray = Object.keys(devicesData).map(index => {
-            //     let person = devicesData[index];
-            //     return person;
-            // });
-            //
             const resultArray = Object.keys(devicesData);
 
 
@@ -233,29 +227,67 @@ export default class AdminTab extends React.Component{
                         </tr>
                         </thead>
                         <tbody>
-                        {resultArray.map(function(item, key) {
+
+
+
+                        {devicesData.map(function(item, key) {
+
+                        for(let i=0; i<devicesData.length; i++){
+
+                            let device = devicesData[i]
+
+
 
                             return (
                                 <tr key = {key} className="adminTabRow">
-                                    <td>{item._id}</td>
+                                    <td>{device._id}</td>
+
                                     <td><img
-                                        src={item.icon}
+                                        src={device.icon}
                                         className="tableIcon"
                                     /></td>
-                                    <td>{item.name}</td>
-                                    <td>{item.room}</td>
+                                    <td>{device.name}</td>
+                                    <td>{device.room}</td>
 
                                     {/*<td>{item.state}</td>*/}
 
-                                    <td>{item.data}</td>
-                                    <td>{item.unit}</td>
+                                    <td>{device.data}</td>
+                                    <td>{device.unit}</td>
 
-                                    <td>{item.room}</td>
-                                    <td>{item.type}</td>
+                                    <td>{device.room}</td>
+                                    <td>{device.type}</td>
                                 </tr>
                             )
 
-                        })}</tbody>
+                        }
+
+
+
+
+                            // return (
+                            //     <tr key = {key} className="adminTabRow">
+                            //         <td>{item._id}</td>
+                            //         <td><img
+                            //             src={item.icon}
+                            //             className="tableIcon"
+                            //         /></td>
+                            //         <td>{item.name}</td>
+                            //         <td>{item.room}</td>
+                            //
+                            //         {/*<td>{item.state}</td>*/}
+                            //
+                            //         <td>{item.data}</td>
+                            //         <td>{item.unit}</td>
+                            //
+                            //         <td>{item.room}</td>
+                            //         <td>{item.type}</td>
+                            //     </tr>
+                            // )
+
+                        })}
+
+
+                        </tbody>
                     </table>
 
 

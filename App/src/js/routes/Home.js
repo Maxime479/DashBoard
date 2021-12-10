@@ -8,7 +8,7 @@ import Square from "../cards/Square";
 import Long from "../cards/Long";
 import Big from "../cards/Big";
 import SearchBar from "../SearchBar";
-import Date from "../widgets/Date";
+import DateWidget from "../widgets/Date";
 import Weather from "../widgets/Weather";
 import Image from "../tools/Image";
 import axios from "axios";
@@ -21,6 +21,8 @@ export default class Home extends React.Component{
 
 
         this.state = {
+
+            arrayLoaded: false,
 
             pageLoads: 0,
 
@@ -212,15 +214,81 @@ export default class Home extends React.Component{
     }
 
     componentDidMount() {
+        let data
         this.getDevicesData()
+
+        //
+        // let tempo = {
+        //     temp: [],
+        //     hum: [],
+        //     lum: [],
+        //     elec: [],
+        // };
+        // //
+        // //
+        // //
+        // let tempData = 28;
+        // let lumData = 850;
+        // let humData = 39;
+        // // let elecData = 12;
+        // //
+        // for(let i=0; i<20; i++){
+        //     tempData = this.getNewData(tempData, "temp")
+        //     tempo.temp.push(tempData)
+        //     //
+        //     // lumData = this.getNewData(lumData, "lum")
+        //     // tempo.lum.push(lumData)
+        //
+        //     // humData = this.getNewData(humData, "hum")
+        //     // tempo.hum.push(humData)
+        //     //
+        //     // elecData = this.getNewData(elecData, "elec")
+        //     // tempo.elec.push(elecData)
+        // }
+        // //
+        // this.showValue(tempo)
+
     }
 
     componentDidUpdate(prevState) {
-        if(prevState.devicesData !== this.state.devicesData){
-            this.getDevicesData()
-            console.log("Update Data")
+
+
+
+        if(this.state.devicesData !== undefined){
+
+
+
+            console.log("GGGGGGGGGGGGGGGGGGGGGG")
+            console.log(this.state.devicesData[2])
+            console.log("GGGGGGGGGGGGGGGGGGGGGG")
+
+
+
+            // data = this.generateMissingData(this.state.devicesData[2])
+            // if(data !== undefined){
+            //     console.log("GGGGGGGGGGGGGGGGGGGGGG")
+            //     console.log(data)
+            //     console.log("GGGGGGGGGGGGGGGGGGGGGG")
+            //
+            //     this.setState({arrayLoaded: true})
+            // }
+
+
+
+        }else{
+            console.log("FATAL ERROR")
         }
 
+
+
+
+
+
+        // if(prevState.devicesData !== this.state.devicesData){
+        //     this.getDevicesData()
+        //     console.log("Update Data")
+        // }
+        //
         let cons = this.state.consumption
 
         let data = this.state.devicesData
@@ -307,118 +375,55 @@ export default class Home extends React.Component{
         return Math.floor(Math.random() * (range) ) + min;
     }
 
-    boundedData = (data, type) => {
+    getNewData = (lastData, type) => {
 
-        let prebound = data;
-        let afterbound = 0;
+        let newValue;
+        let min, max;
+        let minRange, maxRange;
 
-
-
-        const maxTemp = 27;
-        const minTemp = 18;
-
-        const maxHum = 75;
-        const minHum = 37;
-
-        const maxLum = 2000;
-        const minLum = 0;
-
-        let max, min;
-
-        switch (type){
+        switch (type) {
             case "temp":
-                max = maxTemp;
-                min = minTemp;
+                max = lastData + 3;
+                min = lastData - 3;
+                minRange = 18;
+                maxRange = 27;
                 break;
             case "hum":
-                max = maxHum;
-                min = minHum;
+                max = lastData + 10;
+                min = lastData - 10;
+                minRange = 0;
+                maxRange = 1200;
                 break;
             case "lum":
-                max = maxLum;
-                min = minLum;
-                break;
-            default:
-                console.log("Unknown data type: can't bound")
-                return;
-        }
-
-        if(data <= min){
-            data = min;
-        }
-        if(data >= max){
-            data = max;
-        }
-
-        afterbound = data;
-        // let cons = {prebound, afterbound}
-        // console.log("__________________________________")
-        // console.log(cons)
-        // console.log("__________________________________")
-
-        return data;
-    }
-
-    linearNewData = (oldData, type) => {
-
-        let randEvolution = 1;
-        let newData = 0;
-        let range = 0;
-
-        let rangeTemp = 1;
-        let rangeHum = 3;
-        let rangeLum = 200;
-
-        randEvolution = this.getRandNb(0, 5);
-        let evolution;
-
-        switch (type){
-            case "temp":
-                range = rangeTemp;
-                break;
-            case "hum":
-                range = rangeHum;
-                break;
-            case "lum":
-                range = rangeLum;
+                max = lastData + 250;
+                min = lastData - 250;
+                minRange = 35;
+                maxRange = 75;
                 break;
             case "elec":
-                newData = this.getRandNb(0, 20);
-                return newData;
+                return this.getRandNb(0, 20);
             default:
                 console.log("Unknown data type: can't bound")
-                return;
+                return 0;
         }
 
-        evolution = this.getRandNb(0, range);
-
-        //Choose sens of evolution
-        if(randEvolution === (0 || 1)){
-            newData = oldData - evolution;
-        }
-        if(randEvolution === (2 || 3)){
-            return oldData;
-        }
-        if(randEvolution === (4 || 5)){
-            newData = oldData + evolution;
+        newValue = Math.floor(Math.random() * (max - min + 1) + min);
+        while(newValue < minRange || newValue > maxRange){
+            newValue = Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        // let cons = {evolution, data: newData}
-        // console.log("__________________________________")
-        // console.log(cons)
-        // console.log("__________________________________")
-
-        return this.boundedData(newData, type);
+        return newValue;
     }
+
 
 
     forceIntType = (data) => {
         if(typeof data === "number"){
-            return data;
+            return data
         }
 
         if(typeof data === "string"){
-            return parseInt(data);
+            return parseInt(data)
         }
 
     }
@@ -432,6 +437,7 @@ export default class Home extends React.Component{
         //
 
         const id = device.id
+
         const unit = device.unit
         let oldDataArray = device.stored_data
         let arrayLength = oldDataArray.length-1
@@ -446,15 +452,6 @@ export default class Home extends React.Component{
 
         let tempData = lastUpdateData
         let type = ""
-
-        //Min = 18°C | Max = 27°C
-        let randTemp = Math.floor(Math.random() * 40) + 5;
-
-        //Min = 0lm | Max = 2000lm
-        let randLum = Math.floor(Math.random() * 2000);
-
-        //Min = 37% | Max = 75%
-        let randHum = Math.floor(Math.random() * 38) + 37;
 
 
         switch (unit){
@@ -483,7 +480,7 @@ export default class Home extends React.Component{
             tempDate = this.addHours(tempDate, 1)
             formattedDate = this.formatDate(tempDate)
 
-            tempData = this.linearNewData(tempData, type)
+            tempData = this.getNewData(tempData, type)
 
             newDatas.push({time: formattedDate, data: tempData})
         }
@@ -492,13 +489,15 @@ export default class Home extends React.Component{
         if(this.arrayInclude(newDatas, this.formatDate(lastUpdateDate))) {
 
             let concatArray = oldDataArray.concat(newDatas)
+
+            console.log("OUT")
+            console.log("______________________________________________________________________________________________________________________________")
+            this.showValue(newDatas)
+            console.log("______________________________________________________________________________________________________________________________")
+            console.log("OUT")
+
             return concatArray;
 
-            // console.log("OUT")
-            // console.log("______________________________________________________________________________________________________________________________")
-            // this.showValue(concatArray)
-            // console.log("______________________________________________________________________________________________________________________________")
-            // console.log("OUT")
         }
     }
 
@@ -506,15 +505,13 @@ export default class Home extends React.Component{
 
         let link = '/devices/' + id
 
-        axios.patch(link, {
-            body: {
-                stored_data: newData
-            }
+        axios.put(link, {
+            stored_data: newData
         })
             .then(response => {
-                console.log("Update Response")
+                console.log("Updated Response")
                 console.log(response)
-                console.log("Update Response")
+                console.log("Updated Response")
             }).end(this.getDevicesData())
 
 
@@ -569,7 +566,7 @@ export default class Home extends React.Component{
 
                         <header className="mainBodyHeader">
                             <SearchBar/>
-                            <Date
+                            <DateWidget
                             />
                         </header>
 
