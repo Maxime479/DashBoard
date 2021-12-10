@@ -74,8 +74,6 @@ export default class Admin extends React.Component{
                 <aside className="navContainer" style={this.state.navStyle}>
                     <Navigation
                         selected="admin"
-                        // selected="admin"
-                        // penser à rajouter l'option dans le widget
                     />
                 </aside>
 

@@ -21,7 +21,7 @@ export default class AdminTab extends React.Component{
 
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
     }
 
 
@@ -45,7 +45,7 @@ export default class AdminTab extends React.Component{
 
         axios.get('/devices')
             .then(response => {
-                console.log("R2PONSE")
+                console.log("RÉPONSE")
                 console.log(response)
                 console.log(response.data)
 
@@ -77,10 +77,11 @@ export default class AdminTab extends React.Component{
     }
 
     componentDidUpdate(prevState) {
-        // if(prevState.devicesData !== this.state.devicesData){
-        //     this.getDevicesData()
-        // }
-    }
+
+        if((this.state.table === undefined) && (this.state.memberData !== undefined))
+            this.setState({choosedTable: this.userTable(this.state.membersData)})
+        }
+
 
     // sendDataInDB = () => {
     //
@@ -108,16 +109,57 @@ export default class AdminTab extends React.Component{
     //         })
     // }
 
-    handleChange() {
+    // handleChange() {
+    //
+    //     try{
+    //         this.sendStateInDB()
+    //     }finally {
+    //         this.getDevicesData()
+    //         this.getUserData()
+    //     }
+    //
+    // }
 
-        try{
-            this.sendStateInDB()
-        }finally {
-            this.getDevicesData()
-            this.getUserData()
-        }
+    userTable = (membersData) =>{
+
+        return(<table>
+            <thead className="adminTabRow">
+            <tr>
+                <td>ID</td>
+                <td>Privileges</td>
+                <td>Prénom</td>
+                <td>Nom</td>
+                {/*<td>{new Date(item.birthDate)}</td>*/}
+                <td>Login</td>
+                <td>Mot de passe</td>
+                {/*<td>{item.photo}</td>*/}
+                <td>Appareils</td>
+                <td>Pièces</td>
+            </tr>
+            </thead>
+            <tbody>
+            {membersData.map(function(item, key) {
+
+                return (
+                    <tr key = {key} className="adminTabRow">
+                        <td>{item._id}</td>
+                        <td>{item.privileges}</td>
+                        <td>{item.first_name}</td>
+                        <td>{item.last_name}</td>
+                        {/*<td>{new Date(item.birthDate)}</td>*/}
+                        <td>{item.login}</td>
+                        <td>{item.password}</td>
+                        {/*<td>{item.photo}</td>*/}
+                        <td>{item.devices}</td>
+                        <td>{item.rooms}</td>
+                    </tr>
+                )
+
+            })}</tbody>
+        </table>)
 
     }
+
 
     // showState = () => {
     //
@@ -125,11 +167,9 @@ export default class AdminTab extends React.Component{
     //
 
 
-
-
     render(){
 
-        if((this.state.devicesData === undefined) || (this.state.membersData === undefined)){
+        if((this.state.devicesData === undefined) || (this.state.membersData === undefined) || (this.state.choosedTable !== undefined)){
             console.log("EMPTY");
 
             return (
@@ -137,20 +177,10 @@ export default class AdminTab extends React.Component{
                     Data Loading...
                 </div>
             )
-        }else{
+        }else {
 
             this.showValue(this.state)
             // console.log("LOADED");
-
-
-            // const adminTab = this.state.devicesData.map(function(data){
-            //     return <li>{data._id} - {data.name}</li>;
-            // })
-
-
-
-
-
 
 
             let membersData = this.state.membersData
@@ -158,142 +188,131 @@ export default class AdminTab extends React.Component{
 
             const resultArray = Object.keys(devicesData);
 
+            let deviceTable = <table>
+                <thead className="adminTabRow">
+                <tr>
+                    <td>ID</td>
 
-            return(
+                    <td>Icon</td>
+                    <td>Nom</td>
+
+                    <td>État</td>
+
+                    <td>Valeur</td>
+                    <td>Unité</td>
+
+                    <td>Pièce</td>
+                    <td>Type</td>
+                    <td>rooms</td>
+                </tr>
+                </thead>
+                <tbody>
+
+
+                {devicesData.map(function (item, key) {
+
+                    for (let i = 0; i < devicesData.length; i++) {
+
+                        let device = devicesData[i]
+
+
+                        return (
+                            <tr key={key} className="adminTabRow">
+                                <td>{device._id}</td>
+
+                                <td><img
+                                    src={device.icon}
+                                    className="tableIcon"
+                                /></td>
+                                <td>{device.name}</td>
+                                <td>{device.room}</td>
+
+                                {/*<td>{item.state}</td>*/}
+
+                                <td>{device.data}</td>
+                                <td>{device.unit}</td>
+
+                                <td>{device.room}</td>
+                                <td>{device.type}</td>
+                            </tr>
+                        )
+
+                    }
+
+                    // return (
+                    //     <tr key = {key} className="adminTabRow">
+                    //         <td>{item._id}</td>
+                    //         <td><img
+                    //             src={item.icon}
+                    //             className="tableIcon"
+                    //         /></td>
+                    //         <td>{item.name}</td>
+                    //         <td>{item.room}</td>
+                    //
+                    //         {/*<td>{item.state}</td>*/}
+                    //
+                    //         <td>{item.data}</td>
+                    //         <td>{item.unit}</td>
+                    //
+                    //         <td>{item.room}</td>
+                    //         <td>{item.type}</td>
+                    //     </tr>
+                    // )
+
+                })}
+
+
+                </tbody>
+            </table>
+
+
+            return (
 
                 <div className="AdminTabContainer">
 
-                    {/*<ul>*/}
-                    {/*    {adminTab}*/}
-                    {/*</ul>*/}
+                    {/*{this.state.choosedTable}*/}
 
-                    {/*Users*/}
-                    {/*<table>*/}
-                    {/*    <thead className="adminTabRow">*/}
-                    {/*    <tr>*/}
-                    {/*        <td>ID</td>*/}
-                    {/*        <td>Privileges</td>*/}
-                    {/*        <td>Prénom</td>*/}
-                    {/*        <td>Nom</td>*/}
-                    {/*        /!*<td>{new Date(item.birthDate)}</td>*!/*/}
-                    {/*        <td>Login</td>*/}
-                    {/*        <td>Mot de passe</td>*/}
-                    {/*        /!*<td>{item.photo}</td>*!/*/}
-                    {/*        <td>Appareils</td>*/}
-                    {/*        <td>Pièces</td>*/}
-                    {/*    </tr>*/}
-                    {/*    </thead>*/}
-                    {/*    <tbody>*/}
-                    {/*    {membersData.map(function(item, key) {*/}
-
-                    {/*        return (*/}
-                    {/*            <tr key = {key} className="adminTabRow">*/}
-                    {/*                <td>{item._id}</td>*/}
-                    {/*                <td>{item.privileges}</td>*/}
-                    {/*                <td>{item.first_name}</td>*/}
-                    {/*                <td>{item.last_name}</td>*/}
-                    {/*                /!*<td>{new Date(item.birthDate)}</td>*!/*/}
-                    {/*                <td>{item.login}</td>*/}
-                    {/*                <td>{item.password}</td>*/}
-                    {/*                /!*<td>{item.photo}</td>*!/*/}
-                    {/*                <td>{item.devices}</td>*/}
-                    {/*                <td>{item.rooms}</td>*/}
-                    {/*            </tr>*/}
-                    {/*        )*/}
-
-                    {/*    })}</tbody>*/}
-                    {/*</table>*/}
-
-
-
-
-                    {/*Devices*/}
                     <table>
                         <thead className="adminTabRow">
                         <tr>
                             <td>ID</td>
-
-                            <td>Icon</td>
+                            <td>Privileges</td>
+                            <td>Prénom</td>
                             <td>Nom</td>
-
-                            <td>État</td>
-
-                            <td>Valeur</td>
-                            <td>Unité</td>
-
-                            <td>Pièce</td>
-                            <td>Type</td>
-                            <td>rooms</td>
+                            {/*<td>{new Date(item.birthDate)}</td>*/}
+                            <td>Login</td>
+                            <td>Mot de passe</td>
+                            {/*<td>{item.photo}</td>*/}
+                            <td>Appareils</td>
+                            <td>Pièces</td>
                         </tr>
                         </thead>
                         <tbody>
-
-
-
-                        {devicesData.map(function(item, key) {
-
-                        for(let i=0; i<devicesData.length; i++){
-
-                            let device = devicesData[i]
-
-
+                        {membersData.map(function(item, key) {
 
                             return (
                                 <tr key = {key} className="adminTabRow">
-                                    <td>{device._id}</td>
-
-                                    <td><img
-                                        src={device.icon}
-                                        className="tableIcon"
-                                    /></td>
-                                    <td>{device.name}</td>
-                                    <td>{device.room}</td>
-
-                                    {/*<td>{item.state}</td>*/}
-
-                                    <td>{device.data}</td>
-                                    <td>{device.unit}</td>
-
-                                    <td>{device.room}</td>
-                                    <td>{device.type}</td>
+                                    <td>{item._id}</td>
+                                    <td>{item.privileges}</td>
+                                    <td>{item.first_name}</td>
+                                    <td>{item.last_name}</td>
+                                    {/*<td>{new Date(item.birthDate)}</td>*/}
+                                    <td>{item.login}</td>
+                                    <td>{item.password}</td>
+                                    {/*<td>{item.photo}</td>*/}
+                                    <td>{item.devices}</td>
+                                    <td>{item.rooms}</td>
                                 </tr>
                             )
 
-                        }
-
-
-
-
-                            // return (
-                            //     <tr key = {key} className="adminTabRow">
-                            //         <td>{item._id}</td>
-                            //         <td><img
-                            //             src={item.icon}
-                            //             className="tableIcon"
-                            //         /></td>
-                            //         <td>{item.name}</td>
-                            //         <td>{item.room}</td>
-                            //
-                            //         {/*<td>{item.state}</td>*/}
-                            //
-                            //         <td>{item.data}</td>
-                            //         <td>{item.unit}</td>
-                            //
-                            //         <td>{item.room}</td>
-                            //         <td>{item.type}</td>
-                            //     </tr>
-                            // )
-
-                        })}
-
-
-                        </tbody>
+                        })}</tbody>
                     </table>
-
 
                 </div>
             )
+
         }
+
 
 
 
