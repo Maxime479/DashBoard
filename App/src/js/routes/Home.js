@@ -93,7 +93,7 @@ export default class Home extends React.Component{
             if(devicesData[i].room.includes(room) && (devicesData[i].unit.includes("kWh") || devicesData[i].unit.includes("Wh"))){
                 tempData = devicesData[i].data;
                 if(typeof tempData === 'number'){
-                    console.log({devicesData})
+                    // console.log({devicesData})
                     cons += tempData;
                 }
             }
@@ -132,10 +132,10 @@ export default class Home extends React.Component{
         }
 
         if(consumption !== undefined){
-            console.log("DATAAAA")
-            console.log(consumption)
-            console.log(this.state.devicesData)
-            console.log("DATAAAA")
+            // console.log("DATAAAA")
+            // console.log(consumption)
+            // console.log(this.state.devicesData)
+            // console.log("DATAAAA")
             this.setState({consumption: consumption})
         }
 
@@ -258,10 +258,10 @@ export default class Home extends React.Component{
 
 
 
-            console.log("GGGGGGGGGGGGGGGGGGGGGG")
-            console.log(this.state.devicesData[2])
-            console.log("GGGGGGGGGGGGGGGGGGGGGG")
-
+            // console.log("GGGGGGGGGGGGGGGGGGGGGG")
+            // console.log(this.state.devicesData[2])
+            // console.log("GGGGGGGGGGGGGGGGGGGGGG")
+            //
 
 
             // data = this.generateMissingData(this.state.devicesData[2])
@@ -276,7 +276,7 @@ export default class Home extends React.Component{
 
 
         }else{
-            console.log("FATAL ERROR")
+            // console.log("FATAL ERROR")
         }
 
 
