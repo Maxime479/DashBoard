@@ -149,13 +149,13 @@ export default class Date extends React.Component{
 
         if(this.state.day !== undefined && this.state.translated === false){
             this.translateDay(this.state.day);
-            console.log("Day translated");
+            // console.log("Day translated");
             this.setState({ translated: true})
         }
 
         if(this.state.date !== undefined && this.state.converted === false){
             this.convertDate(this.state.date);
-            console.log("Date converted");
+            // console.log("Date converted");
             this.setState({ converted: true})
         }
 

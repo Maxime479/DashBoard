@@ -303,7 +303,7 @@ export default class Home extends React.Component{
 
             this.setState({pageLoads: (this.state.pageLoads + 1)})
         }else if(this.state.pageLoads <= 51){
-            console.log("Can't Innitialize data")
+            // console.log("Can't Innitialize data")
         }
     }
 
