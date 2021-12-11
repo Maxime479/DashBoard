@@ -19,6 +19,19 @@ export default class Weather extends React.Component{
             converted: false,
             iconCode: '04d',
 
+            fakeWeatherData: {
+
+                location : "Paris" + ", " + "Ile-de-France" + ", " + "France",
+                temp : 6 + "°C",
+                humidity : 30 + " %",
+                precip : 2 + " mm",
+                wind : 12 + " km/h",
+
+
+            },
+
+            unfound : "Unk",
+
 
         };
 
@@ -29,7 +42,11 @@ export default class Weather extends React.Component{
     componentDidMount() {
 
         let dateApiData;
-        axios.get('http://api.weatherstack.com/current?access_key=1d90a51ee8d83a9cf3b533c78e8fcb68&query=Paris&unit=m', {
+
+        let oldApiKey = "1d90a51ee8d83a9cf3b533c78e8fcb68"
+        let apiKey = "d9f59ca37c2636197f24cc34057704fb"
+
+        axios.get('http://api.weatherstack.com/current?access_key=' + apiKey + '&query=Paris&unit=m', {
         })
             .then(response => {
 
@@ -38,18 +55,33 @@ export default class Weather extends React.Component{
 
                 let location, temp, humidity, precip, wind;
 
-                if(response.data.success){
+                if(response.status === 200 && !(response.data.success === false)){
+
+
+
+
+
+
                     location = data.location.name + ", " + data.location.region + ", " + data.location.country
                     temp = data.current.temperature + "°C"
                     humidity = data.current.humidity + " %"
                     precip = data.current.precip + " mm"
                     wind = data.current.wind_speed + " km/h"
+
+
+
                 }else{
-                    location = "Paris" + ", " + "Ile-de-France" + ", " + "France"
-                    temp = 6 + "°C"
-                    humidity = 30 + " %"
-                    precip = 2 + " mm"
-                    wind = 12 + " km/h"
+
+
+
+                    location = this.state.unfound
+                    temp = this.state.unfound
+                    humidity = this.state.unfound
+                    precip = this.state.unfound
+                    wind = this.state.unfound
+
+
+
                 }
 
 
