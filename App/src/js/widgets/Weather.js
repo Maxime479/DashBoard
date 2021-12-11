@@ -6,6 +6,9 @@ import Text from "../tools/Text";
 import Image from "../tools/Image";
 
 
+//Lien pour la liste de codes météo : https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+
+
 export default class Weather extends React.Component{
 
     constructor(props) {
@@ -95,8 +98,6 @@ export default class Weather extends React.Component{
                 this.setState({precip: precip})
                 this.setState({wind: wind})
             })
-
-
 
 
         //Get location code from OpenWeatherMap API to put in url to get good icon
