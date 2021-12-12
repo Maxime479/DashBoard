@@ -69,3 +69,18 @@
     }
 }
 
+
+.graph{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 3em;
+
+    /*background-color: #838A98;*/
+}
+
+.graph > *{
+    border: 0.1em solid rgba(75, 111, 184, 0.5);
+    border-radius: 10px;
+    padding: 3em 2em;
+
+}
