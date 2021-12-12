@@ -141,9 +141,9 @@ export default class Home extends React.Component{
 
     }
 
-    totalSensorData = () => {
+    totalSensorData = (devicesData) => {
 
-        let devicesData = this.state.devicesData;
+        // let devicesData = this.state.devicesData;
         let allTemp = [], allHum = [], allLum = [];
         let tempDataMean = 0, tempIndex = 0;
         let temp = 0, hum = 0, lum = 0;
@@ -188,13 +188,13 @@ export default class Home extends React.Component{
             lum = tempDataMean | 0;
         }
 
-        this.setState({sensor: {
-                temp: temp,
-                hum: hum,
-                lum: lum,
-            }})
+        let returnData = {
+            temp: temp,
+            hum: hum,
+            lum: lum,
+        }
 
-
+        return returnData
     }
 
     dataUpdate = () => {
@@ -203,7 +203,10 @@ export default class Home extends React.Component{
         this.totalConsumption("Cuisine")
         this.totalConsumption("Salle de bain")
 
-        this.totalSensorData()
+
+
+        this.setState({sensor: this.totalSensorData(this.state.devicesData)})
+
     }
 
     getDevicesData = () => {
@@ -305,6 +308,7 @@ export default class Home extends React.Component{
         }else if(this.state.pageLoads <= 51){
             // console.log("Can't Innitialize data")
         }
+
     }
 
 
@@ -565,7 +569,9 @@ export default class Home extends React.Component{
                     <main className="homeMain">
 
                         <header className="mainBodyHeader">
-                            <SearchBar/>
+                            <SearchBar
+                                onClick={() => {console.log(this.state)}}
+                            />
                             <DateWidget
                             />
                         </header>
@@ -601,7 +607,7 @@ export default class Home extends React.Component{
                                 <Long
                                     className="temp"
                                     title="Température"
-                                    data={"+" + this.state.sensor.temp + "°C"}
+                                    data={"+" + (this.state.sensor.temp) + "°C"}
                                 />
 
                                 <Long

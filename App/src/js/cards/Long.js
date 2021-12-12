@@ -6,6 +6,7 @@ import '../../css/cards/Long.css';
 
 
 export default class Long extends React.Component{
+    // graphClass;
     render(){
         return(
             <div className={"long " + this.props.className}>
@@ -18,10 +19,11 @@ export default class Long extends React.Component{
 
                     </div>
 
-                    <div className="infos">
+                    <div className={"infos " + this.props.graphClass}>
 
                         <Text
-                            className="title titleLong"
+                            className={"title titleLong " + this.props.titleClass}
+                            content={this.props.content}
                             text={this.props.title}
                         />
 
@@ -34,7 +36,7 @@ export default class Long extends React.Component{
 
                 </div>
 
-                <div className="graphLink">
+                <div className="graphLink" onClick={this.props.onClick}>
 
                 </div>
 

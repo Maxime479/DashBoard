@@ -7,7 +7,7 @@
     justify-content: space-between;
     align-items: center;
 
-    width: 24em;
+    min-width: 24em;
 
     padding: 14px 10px 14px 16px;
 
@@ -15,7 +15,10 @@
     border: var(--card--border);
     box-sizing: border-box;
     border-radius: 39px;
+
+    max-height: 125px;
 }
+
 
 @media screen and (max-width: 990px) {
     .long{
@@ -29,7 +32,7 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-
+    align-items: flex-start;
 }
 
 .logo{
@@ -46,11 +49,14 @@
 .infos{
     margin-left: 1em;
     margin-right: 3em;
+    margin-top: 0.2em;
 
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
     justify-content: space-around;
+
+    gap: 1em;
 }
 
 .titleLong{
@@ -61,7 +67,12 @@
     line-height: 15px;
 
     color: rgba(60, 60, 60, 0.9);
+
+    display: flex;
+    flex-flow: row nowrap;
+    white-space: nowrap;
 }
+
 
 
 .dataLong{

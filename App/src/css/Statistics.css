@@ -10,6 +10,23 @@
 
 }
 
+.sensorInGraph{
+    margin-top: 0.5em;
+    margin-right: 1em !important;
+    gap: 1.7em;
+}
+
+
+.titleInGraph::before{
+    content: attr(room-content);
+    position: absolute;
+    color: var(--text-gray);
+    font-size: 0.9em;
+
+    padding-top: 1.2em;
+}
+
+
 
 
 

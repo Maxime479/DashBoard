@@ -15,6 +15,7 @@ export default class SearchBar extends React.Component{
 
                 <Logo
                     className={"fa-solid fa-magnifying-glass"}
+                    onClick={this.props.onClick}
                 />
 
             </div>
