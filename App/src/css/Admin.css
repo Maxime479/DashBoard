@@ -102,11 +102,6 @@ thead tr td:hover{
 }
 
 
-.top{
-    display: flex;
-    flex-flow: row nowrap;
-}
-
 
 
 .tableChooseButton{
