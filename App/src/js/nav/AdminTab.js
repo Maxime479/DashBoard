@@ -17,19 +17,6 @@ export default class AdminTab extends React.Component{
 
     }
 
-
-    showValue = (value) => {
-        // console.log("------------------------------------------")
-        console.log(" ")
-        console.log(" ")
-        console.log("__________________________________________")
-        console.log(value)
-        console.log("__________________________________________")
-        console.log(" ")
-        console.log(" ")
-        // console.log("------------------------------------------")
-    }
-
     getDevicesData = () => {
 
         let tempDevices = {}
@@ -53,106 +40,236 @@ export default class AdminTab extends React.Component{
     }
 
 
-    compareTable = (type) => {
+    compareTable = (table, type) => {
 
-        switch (type){
-            case 'name':
-                return(
-                    function compare( a, b ) {
-                        if ( a.name < b.name ){
-                            return -1;
+        if(table.includes("devices")){
+            switch (type){
+                case 'name':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.name < b.name ){
+                                return -1;
+                            }
+                            if ( a.name > b.name ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        if ( a.name > b.name ){
-                            return 1;
+                    )
+                case 'state':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.state < b.state ){
+                                return -1;
+                            }
+                            if ( a.state > b.state ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        return 0;
-                    }
-                )
-            case 'state':
-                return(
-                    function compare( a, b ) {
-                        if ( a.state < b.state ){
-                            return -1;
+                    )
+                case 'data':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.data < b.data ){
+                                return -1;
+                            }
+                            if ( a.data > b.data ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        if ( a.state > b.state ){
-                            return 1;
+                    )
+                case 'id':
+                    return(
+                        function compare( a, b ) {
+                            if ( a._id < b._id ){
+                                return -1;
+                            }
+                            if ( a._id > b._id ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        return 0;
-                    }
-                )
-            case 'data':
-                return(
-                    function compare( a, b ) {
-                        if ( a.data < b.data ){
-                            return -1;
+                    )
+                case 'unit':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.unit < b.unit ){
+                                return -1;
+                            }
+                            if ( a.unit > b.unit ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        if ( a.data > b.data ){
-                            return 1;
+                    )
+                case 'room':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.room < b.room ){
+                                return -1;
+                            }
+                            if ( a.room > b.room ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        return 0;
-                    }
-                )
-            case 'id':
-                return(
-                    function compare( a, b ) {
-                        if ( a._id < b._id ){
-                            return -1;
+                    )
+                case 'type':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.type < b.type ){
+                                return -1;
+                            }
+                            if ( a.type > b.type ){
+                                return 1;
+                            }
+                            return 0;
                         }
-                        if ( a._id > b._id ){
-                            return 1;
+                    )
+                default:
+                    return(
+                        function compare()  {
+                            return 0;
                         }
-                        return 0;
-                    }
-                )
-            case 'unit':
-                return(
-                    function compare( a, b ) {
-                        if ( a.unit < b.unit ){
-                            return -1;
-                        }
-                        if ( a.unit > b.unit ){
-                            return 1;
-                        }
-                        return 0;
-                    }
-                )
-            case 'room':
-                return(
-                    function compare( a, b ) {
-                        if ( a.room < b.room ){
-                            return -1;
-                        }
-                        if ( a.room > b.room ){
-                            return 1;
-                        }
-                        return 0;
-                    }
-                )
-            case 'type':
-                return(
-                    function compare( a, b ) {
-                        if ( a.type < b.type ){
-                            return -1;
-                        }
-                        if ( a.type > b.type ){
-                            return 1;
-                        }
-                        return 0;
-                    }
-                )
-            default:
-                return(
-                    function compare()  {
-                        return 0;
-                    }
-                )
-
+                    )
+            }
         }
+
+        if(table.includes("members")){
+            switch (type){
+                case 'first_name':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.first_name < b.first_name ){
+                                return -1;
+                            }
+                            if ( a.first_name > b.first_name ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'last_name':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.last_name < b.last_name ){
+                                return -1;
+                            }
+                            if ( a.last_name > b.last_name ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'password':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.password < b.password ){
+                                return -1;
+                            }
+                            if ( a.password > b.password ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'id':
+                    return(
+                        function compare( a, b ) {
+                            if ( a._id < b._id ){
+                                return -1;
+                            }
+                            if ( a._id > b._id ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'login':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.login < b.login ){
+                                return -1;
+                            }
+                            if ( a.login > b.login ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'birthdate':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.birthdate < b.birthdate ){
+                                return -1;
+                            }
+                            if ( a.birthdate > b.birthdate ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'privileges':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.privileges < b.privileges ){
+                                return -1;
+                            }
+                            if ( a.privileges > b.privileges ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'devices':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.devices < b.devices ){
+                                return -1;
+                            }
+                            if ( a.devices > b.devices ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                case 'rooms':
+                    return(
+                        function compare( a, b ) {
+                            if ( a.rooms < b.rooms ){
+                                return -1;
+                            }
+                            if ( a.rooms > b.rooms ){
+                                return 1;
+                            }
+                            return 0;
+                        }
+                    )
+                default:
+                    return(
+                        function compare()  {
+                            return 0;
+                        }
+                    )
+            }
+        }
+
+
 
     }
 
-    sortTable = (type) => {
-        this.setState({devicesData: this.state.devicesData.sort(this.compareTable(type))})
+    sortTable = (table, type) => {
+
+        if(table.includes("devices")){
+            this.setState({devicesData: this.state.devicesData.sort(this.compareTable(table, type))})
+        }
+
+        if(table.includes("members")){
+            this.setState({membersData: this.state.membersData.sort(this.compareTable(table, type))})
+        }
+
     }
 
 
@@ -163,10 +280,10 @@ export default class AdminTab extends React.Component{
 
     componentDidUpdate(prevState) {
 
-        if((this.state.choosedTable === undefined) && (this.state.membersData !== undefined)){
-            console.log("Did it")
-            this.setState({choosedTable: this.userTable(this.state.membersData)})
-        }
+        // if((this.state.choosedTable === undefined) && (this.state.membersData !== undefined)){
+        //     console.log("Did it")
+        //     this.setState({choosedTable: this.userTable(this.state.membersData)})
+        // }
 
     }
 
@@ -213,33 +330,52 @@ export default class AdminTab extends React.Component{
         return(<table>
             <thead className="adminTabRow">
             <tr>
-                <td>ID</td>
-                <td>Privileges</td>
-                <td>Prénom</td>
-                <td>Nom</td>
-                {/*<td>{new Date(item.birthDate)}</td>*/}
-                <td>Login</td>
-                <td>Mot de passe</td>
-                {/*<td>{item.photo}</td>*/}
-                <td>Appareils</td>
-                <td>Pièces</td>
+                <td onClick={() => {this.sortTable("members", "privileges")}} className="firstCol">Privileges</td>
+
+                <td>Photo</td>
+
+                <td onClick={() => {this.sortTable("members", "first_name")}} >Prénom</td>
+                <td onClick={() => {this.sortTable("members", "last_name")}} >Nom</td>
+                <td onClick={() => {this.sortTable("members", "birthdate")}} >Birthdate</td>
+                <td onClick={() => {this.sortTable("members", "login")}} >Login</td>
+                <td onClick={() => {this.sortTable("members", "password")}} >Mot de passe</td>
+
+                <td onClick={() => {this.sortTable("members", "devices")}} className="devicesCol">Appareils</td>
+                <td onClick={() => {this.sortTable("members", "rooms")}} >Pièces</td>
+
+                <td onClick={() => {this.sortTable("members", "id")}}  className="lastCol">ID</td>
+
             </tr>
             </thead>
             <tbody>
             {membersData.map(function(item, key) {
 
+                let birth = new Date(item.birthdate).toLocaleString()
+                let idx = birth.indexOf(",")
+                birth = birth.slice(0, idx)
+
+
                 return (
                     <tr key = {key} className="adminTabRow">
-                        <td>{item._id}</td>
+
                         <td>{item.privileges}</td>
+
+                        <td><img
+                            alt="profil photo"
+                            src={item.photo}
+                            className="tableIcon tablePhoto"
+                        /></td>
+
                         <td>{item.first_name}</td>
                         <td>{item.last_name}</td>
-                        {/*<td>{new Date(item.birthDate)}</td>*/}
+                        <td>{birth}</td>
                         <td>{item.login}</td>
                         <td>{item.password}</td>
-                        {/*<td>{item.photo}</td>*/}
+
                         <td>{item.devices}</td>
                         <td>{item.rooms}</td>
+
+                        <td>{item._id}</td>
                     </tr>
                 )
 
@@ -253,18 +389,18 @@ export default class AdminTab extends React.Component{
         return(<table>
             <thead className="adminTabRow">
             <tr>
-                <td className="iconHead">Icon</td>
-                <td onClick={() => {this.sortTable("name")}} >Nom</td>
+                <td className="iconHead firstCol">Icon</td>
+                <td onClick={() => {this.sortTable("devices", "name")}}>Nom</td>
 
-                <td onClick={() => {this.sortTable("data")}} >Valeur</td>
-                <td onClick={() => {this.sortTable("unit")}} >Unité</td>
+                <td onClick={() => {this.sortTable("devices", "data")}} >Valeur</td>
+                <td onClick={() => {this.sortTable("devices", "unit")}} >Unité</td>
 
-                <td onClick={() => {this.sortTable("state")}} >État</td>
+                <td onClick={() => {this.sortTable("devices", "state")}} >État</td>
 
-                <td onClick={() => {this.sortTable("room")}} >Pièce</td>
-                <td onClick={() => {this.sortTable("type")}} >Type</td>
+                <td onClick={() => {this.sortTable("devices", "room")}} >Pièce</td>
+                <td onClick={() => {this.sortTable("devices", "type")}} >Type</td>
 
-                <td onClick={() => {this.sortTable("id")}} >ID</td>
+                <td onClick={() => {this.sortTable("devices", "id")}}   className="lastCol">ID</td>
             </tr>
             </thead>
             <tbody>
@@ -306,11 +442,30 @@ export default class AdminTab extends React.Component{
 
     }
 
+    selectedTable = (table, type) => {
+
+        if(type.includes("members")){
+            return this.userTable(table)
+        }
+
+        if(type.includes("devices")){
+            return this.devicesTable(table)
+        }
+
+    }
+
+
+    switchTable = (data, type) => {
+
+        this.setState({choosedTable: data, tableType: type})
+
+    }
+
 
 
     render(){
 
-        if((this.state.devicesData === undefined) || (this.state.membersData === undefined) || (this.state.choosedTable === undefined)){
+        if((this.state.devicesData === undefined) || (this.state.membersData === undefined)){
             console.log("EMPTY");
 
             return (
@@ -320,22 +475,22 @@ export default class AdminTab extends React.Component{
             )
         }else {
 
-            this.showValue(this.state)
             // console.log("LOADED");
-
-
-            let membersData = this.state.membersData
-            let devicesData = this.state.devicesData
-
 
                     return (
 
                     <div className="AdminTabContainer">
 
+                        <div className="tableChooseButton">
+
+                            <button onClick={() => {this.switchTable(this.state.devicesData, "devices")}}>Appareils</button>
+                            <button onClick={() => {this.switchTable(this.state.membersData, "members")}}>Membres</button>
 
 
-                    {this.devicesTable(devicesData)}
-                    {this.userTable(membersData)}
+                        </div>
+
+
+                    {(this.state.choosedTable === undefined) ? null  : this.selectedTable(this.state.choosedTable, this.state.tableType)}
 
 
                     </div>
